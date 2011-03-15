@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		774BEE3F13301D7A00713179 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 774BEE3E13301D7A00713179 /* main.cpp */; };
+		774BEE4B13302ECE00713179 /* Image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 774BEE4913302ECE00713179 /* Image.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +27,9 @@
 		774BEE3A13301D7A00713179 /* RayTracer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RayTracer; sourceTree = BUILT_PRODUCTS_DIR; };
 		774BEE3E13301D7A00713179 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		774BEE4013301D7A00713179 /* RayTracer.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = RayTracer.1; sourceTree = "<group>"; };
+		774BEE471330221F00713179 /* rgb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rgb.h; path = Libraries/rgb.h; sourceTree = "<group>"; };
+		774BEE4913302ECE00713179 /* Image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Image.cpp; path = Libraries/Image.cpp; sourceTree = "<group>"; };
+		774BEE4A13302ECE00713179 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Image.h; path = Libraries/Image.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +62,21 @@
 		774BEE3D13301D7A00713179 /* RayTracer */ = {
 			isa = PBXGroup;
 			children = (
+				774BEE46133021F400713179 /* Libraries */,
 				774BEE3E13301D7A00713179 /* main.cpp */,
 				774BEE4013301D7A00713179 /* RayTracer.1 */,
 			);
 			path = RayTracer;
+			sourceTree = "<group>";
+		};
+		774BEE46133021F400713179 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				774BEE471330221F00713179 /* rgb.h */,
+				774BEE4913302ECE00713179 /* Image.cpp */,
+				774BEE4A13302ECE00713179 /* Image.h */,
+			);
+			name = Libraries;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -115,6 +130,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				774BEE3F13301D7A00713179 /* main.cpp in Sources */,
+				774BEE4B13302ECE00713179 /* Image.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,7 +140,7 @@
 		774BEE4113301D7A00713179 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -142,7 +158,7 @@
 		774BEE4213301D7A00713179 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
