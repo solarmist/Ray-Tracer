@@ -24,7 +24,7 @@ public:
     ~Image();
     //return false if x or y are out of bounds, else true
     bool set(int x, int y, const rgb & color);
-    void gammaCorrect(precision gamma);
+    void gammaCorrect(colorPrecision gamma);
     //Outputs PPM image to 'out'
     void writePPM(ostream& out);
     void readPPM(string file_name);
