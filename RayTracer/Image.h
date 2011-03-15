@@ -12,6 +12,7 @@
 #include <string>
 #include <fstream>
 #include "rgb.h"
+using namespace std;
 
 class Image{
 public:
