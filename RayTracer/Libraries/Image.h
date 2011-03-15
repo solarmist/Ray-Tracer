@@ -21,6 +21,7 @@ public:
     Image(int width, int height);
     //Initializes raster to 'background'
     Image(int width, int height, rgb background);
+    ~Image();
     //return false if x or y are out of bounds, else true
     bool set(int x, int y, const rgb & color);
     void gammaCorrect(precision gamma);
