@@ -22,22 +22,23 @@
     //Use double on 64-bit OSs, float otherwise
     #ifdef _64_BIT
         typedef double colorPrecision;
-        typedef ONE 1.0;
-        typedef ZERO 0.0;
+        #define ONE 1.0f
+        #define ZERO 0.0f
     #else
         typedef float colorPrecision;
-        typedef ONE 1.0f;
-        typedef ZERO 0.0f;
+        #define ONE 1.0f
+        #define ZERO 0.0f
     #endif
 #endif
 
 #include <iostream>
+using namespace std;
 
 class rgb{
     
 public:
     rgb() {_r = _g = _b = 0;}
-    rgb(colorPrecision red, colorPrecision green, colorPrecision blue)
+    rgb(colorPrecision red, colorPrecision green, colorPrecision blue);
     rgb(const rgb & original) {*this = original;}
     
     void setRed(colorPrecision red)     {_r = red;}
@@ -124,9 +125,9 @@ inline void rgb::clamp(){
 }
 
 inline ostream& operator<<(ostream & out, const rgb & the_rgb){
-    out << the_rgb._r << 'r '
-        << the_rgb._g << 'g '
-        << the_rgb._b << 'b ';
+    out << the_rgb._r << "r "
+        << the_rgb._g << "g "
+        << the_rgb._b << "b ";
     return out;
 }
 
