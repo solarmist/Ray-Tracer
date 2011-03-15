@@ -31,7 +31,7 @@
     #endif
 #endif
 
-#include <iostream.h>
+#include <iostream>
 
 class rgb{
     
