@@ -11,7 +11,7 @@
 
 #ifndef precision
     //Use double on 64-bit OSs, float otherwise
-    #ifdef _64-BIT
+    #ifdef _64_BIT
         typedef double precision;
     #else
         typedef float precision;
@@ -20,7 +20,7 @@
 
 #ifndef colorPrecision
     //Use double on 64-bit OSs, float otherwise
-    #ifdef _64-BIT
+    #ifdef _64_BIT
         typedef double colorPrecision;
         typedef ONE 1.0;
         typedef ZERO 0.0;
