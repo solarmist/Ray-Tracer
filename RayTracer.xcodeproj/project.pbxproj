@@ -37,6 +37,7 @@
 		774BEE4F1330537000713179 /* RNG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNG.h; path = Libraries/RNG.h; sourceTree = "<group>"; };
 		774BEE5013306D9400713179 /* ONB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ONB.cpp; path = Libraries/ONB.cpp; sourceTree = "<group>"; };
 		774BEE5113306D9500713179 /* ONB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ONB.h; path = Libraries/ONB.h; sourceTree = "<group>"; };
+		774BEE5313309F2A00713179 /* DynArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DynArray.h; path = Libraries/DynArray.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +88,7 @@
 				774BEE4F1330537000713179 /* RNG.h */,
 				774BEE5013306D9400713179 /* ONB.cpp */,
 				774BEE5113306D9500713179 /* ONB.h */,
+				774BEE5313309F2A00713179 /* DynArray.h */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";

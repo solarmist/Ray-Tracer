@@ -7,29 +7,20 @@
 //
 #define _64_BIT 1
 
-#ifndef precision
-    //Use double on 64-bit OSs, float otherwise
-    #ifdef _64_BIT
-        typedef double precision;
-    #else
-        typedef float precision;
-    #endif
-#endif
-
-
 #include <iostream>
-#include "Vector3.h"
-#include "RNG.h"
+#include "ONB.h"
 
 int main (int argc, const char * argv[])
 {
-    RNG random;
-    Vector3 v(0.3f,1.0f,12.8f);
+    Vector3 v0(0.3, 22.0, 13);
+    Vector3 v1(12.3, 1.0, 98.0f);
+    Vector3 v2(0.3, 1.0, 98.0f);
+    Vector3 temp;
+    ONB o(v0, v1, v2);
+    temp = v0;
     // insert code here...
-    std::cout << "Hello, World!" << sizeof(precision) << std::endl;
-    std::cout << "Hello, World!" << v << std::endl;
-    std::cout << "Hello, World!" << random() << std::endl;
-        std::cout << "Hello, World!" << random() << std::endl;
+    std::cout << "Hello, World!" << v0.x()<< ' ' << v0.y() << ' '<<v0.z() << std::endl;
+    std::cout << "Hello, World!" << o;
 
     return 0;
 }
