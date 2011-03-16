@@ -11,6 +11,8 @@
 		774BEE4B13302ECE00713179 /* Image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 774BEE4913302ECE00713179 /* Image.cpp */; };
 		774BEE4E13303C5800713179 /* Vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 774BEE4C13303C5800713179 /* Vector3.cpp */; };
 		774BEE5213306D9500713179 /* ONB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 774BEE5013306D9400713179 /* ONB.cpp */; };
+		77F222851331219400285B41 /* Triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77F222831331219400285B41 /* Triangle.cpp */; };
+		77F222881331228700285B41 /* Sphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77F222861331228700285B41 /* Sphere.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +41,11 @@
 		774BEE5113306D9500713179 /* ONB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ONB.h; path = Libraries/ONB.h; sourceTree = "<group>"; };
 		774BEE5313309F2A00713179 /* DynArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DynArray.h; path = Libraries/DynArray.h; sourceTree = "<group>"; };
 		774BEE541330A34000713179 /* Ray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ray.h; path = Libraries/Ray.h; sourceTree = "<group>"; };
+		77F2228113311F8F00285B41 /* Shape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shape.h; path = Libraries/Shape.h; sourceTree = "<group>"; };
+		77F222831331219400285B41 /* Triangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Triangle.cpp; path = Libraries/Triangle.cpp; sourceTree = "<group>"; };
+		77F222841331219400285B41 /* Triangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Triangle.h; path = Libraries/Triangle.h; sourceTree = "<group>"; };
+		77F222861331228700285B41 /* Sphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Sphere.cpp; path = Libraries/Sphere.cpp; sourceTree = "<group>"; };
+		77F222871331228700285B41 /* Sphere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sphere.h; path = Libraries/Sphere.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,16 +88,21 @@
 		774BEE46133021F400713179 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				774BEE471330221F00713179 /* rgb.h */,
+				774BEE4F1330537000713179 /* RNG.h */,
+				774BEE5313309F2A00713179 /* DynArray.h */,
 				774BEE4913302ECE00713179 /* Image.cpp */,
 				774BEE4A13302ECE00713179 /* Image.h */,
+				774BEE471330221F00713179 /* rgb.h */,
 				774BEE4C13303C5800713179 /* Vector3.cpp */,
 				774BEE4D13303C5800713179 /* Vector3.h */,
-				774BEE4F1330537000713179 /* RNG.h */,
 				774BEE5013306D9400713179 /* ONB.cpp */,
 				774BEE5113306D9500713179 /* ONB.h */,
-				774BEE5313309F2A00713179 /* DynArray.h */,
 				774BEE541330A34000713179 /* Ray.h */,
+				77F2228113311F8F00285B41 /* Shape.h */,
+				77F222831331219400285B41 /* Triangle.cpp */,
+				77F222841331219400285B41 /* Triangle.h */,
+				77F222861331228700285B41 /* Sphere.cpp */,
+				77F222871331228700285B41 /* Sphere.h */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -149,6 +161,8 @@
 				774BEE4B13302ECE00713179 /* Image.cpp in Sources */,
 				774BEE4E13303C5800713179 /* Vector3.cpp in Sources */,
 				774BEE5213306D9500713179 /* ONB.cpp in Sources */,
+				77F222851331219400285B41 /* Triangle.cpp in Sources */,
+				77F222881331228700285B41 /* Sphere.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +242,7 @@
 				774BEE4513301D7A00713179 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
