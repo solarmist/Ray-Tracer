@@ -45,7 +45,7 @@ public:
     //these operators perform no clamping
     rgb& operator=(const rgb & right_op);
     rgb& operator+=(const rgb & right_op);
-    //rgb& operator-=(const rgb & right_op);
+    rgb& operator-=(const rgb & right_op);
     rgb& operator*=(const rgb & right_op);
     rgb& operator/=(const rgb & right_op);
     rgb& operator*=(float right_op);
@@ -79,10 +79,10 @@ inline rgb& rgb::operator+=(const rgb & right_op){
     return *this;
 }
 
-/*inline rgb& rgb::operator-=(const rgb & right_op){
+inline rgb& rgb::operator-=(const rgb & right_op){
     *this = *this - right_op;
     return *this;
-}*/
+}
 
 inline rgb& rgb::operator*=(const rgb & right_op){
     *this = *this * right_op;
