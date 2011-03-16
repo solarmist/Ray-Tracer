@@ -9,7 +9,7 @@
 #include "Sphere.h"
 
 Sphere::Sphere(const Vector3& _center, const double _radius, const rgb& _color)
-    :center(_center), radius(_radius), color(_color) {}
+    :center(_center), radius((precision)_radius), color(_color) {}
 
 //BBox Sphere::boundingBox() const;
 

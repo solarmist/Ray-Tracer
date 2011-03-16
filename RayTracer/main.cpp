@@ -5,7 +5,7 @@
 //  Created by Joshua Olson on 3/15/11.
 //  Copyright 2011 solarmist. All rights reserved.
 //
-#define _64_BIT 1
+//#define _64_BIT 1
 
 #include <vector>
 #include <iostream>
@@ -26,17 +26,17 @@ int main ()
     int height, width;
     height = 500;
     width = 500;
-    rgb background(.2, .2, .2);
-
+    rgb background((colorPrecision).2, (colorPrecision).2, (colorPrecision).2);
+    
     //Geometery
-    vector<Shape*> shapes;
+    vector<Shape *> shapes;
     shapes.push_back(new Sphere(Vector3(250, 250, -1000), 
                                 150, 
-                                rgb(.2, .2, .8)) );
+                                rgb((colorPrecision).2, (colorPrecision).2, (colorPrecision).8)) );
     shapes.push_back(new Triangle(Vector3(300.0f, 600.0f, -800.0f), 
                                   Vector3(300.0f, 600.0f, -800.0f), 
                                   Vector3(300.0f, 600.0f, -800.0f), 
-                                  rgb(.8, .2, .2)));
+                                  rgb((colorPrecision).8, (colorPrecision).2, (colorPrecision).2)));
     
     Image im(width, height);
     
@@ -59,7 +59,11 @@ int main ()
             else
                 im.set(i, j, background);
         }
+    fstream file;
+    file.open("/Users/solarmist/Documents/Graphics/RayTracer/test.ppm", fstream::out);
     im.writePPM(cout);
+    im.writePPM(file);
+    file.close();
     
     return 0;
 }

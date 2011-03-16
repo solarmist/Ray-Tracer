@@ -69,7 +69,7 @@ void Image::gammaCorrect(colorPrecision gamma){
 void Image::writePPM(ostream &out){
     //output header
     out << "P6\n";
-    out << nx << "width " << ny << "height\n";
+    out << nx << ' ' << ny << '\n';
     out << "255\n";
     int col, row;
     unsigned int ired, igreen, iblue;
