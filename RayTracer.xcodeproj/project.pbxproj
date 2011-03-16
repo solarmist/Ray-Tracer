@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		774BEE3F13301D7A00713179 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 774BEE3E13301D7A00713179 /* main.cpp */; };
 		774BEE4B13302ECE00713179 /* Image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 774BEE4913302ECE00713179 /* Image.cpp */; };
+		774BEE4E13303C5800713179 /* Vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 774BEE4C13303C5800713179 /* Vector3.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,6 +31,8 @@
 		774BEE471330221F00713179 /* rgb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rgb.h; path = Libraries/rgb.h; sourceTree = "<group>"; };
 		774BEE4913302ECE00713179 /* Image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Image.cpp; path = Libraries/Image.cpp; sourceTree = "<group>"; };
 		774BEE4A13302ECE00713179 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Image.h; path = Libraries/Image.h; sourceTree = "<group>"; };
+		774BEE4C13303C5800713179 /* Vector3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Vector3.cpp; path = Libraries/Vector3.cpp; sourceTree = "<group>"; };
+		774BEE4D13303C5800713179 /* Vector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Vector3.h; path = Libraries/Vector3.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +78,8 @@
 				774BEE471330221F00713179 /* rgb.h */,
 				774BEE4913302ECE00713179 /* Image.cpp */,
 				774BEE4A13302ECE00713179 /* Image.h */,
+				774BEE4C13303C5800713179 /* Vector3.cpp */,
+				774BEE4D13303C5800713179 /* Vector3.h */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -131,6 +136,7 @@
 			files = (
 				774BEE3F13301D7A00713179 /* main.cpp in Sources */,
 				774BEE4B13302ECE00713179 /* Image.cpp in Sources */,
+				774BEE4E13303C5800713179 /* Vector3.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
