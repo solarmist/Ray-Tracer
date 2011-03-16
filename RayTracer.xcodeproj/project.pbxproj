@@ -33,6 +33,7 @@
 		774BEE4A13302ECE00713179 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Image.h; path = Libraries/Image.h; sourceTree = "<group>"; };
 		774BEE4C13303C5800713179 /* Vector3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Vector3.cpp; path = Libraries/Vector3.cpp; sourceTree = "<group>"; };
 		774BEE4D13303C5800713179 /* Vector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Vector3.h; path = Libraries/Vector3.h; sourceTree = "<group>"; };
+		774BEE4F1330537000713179 /* RNG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNG.h; path = Libraries/RNG.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +81,7 @@
 				774BEE4A13302ECE00713179 /* Image.h */,
 				774BEE4C13303C5800713179 /* Vector3.cpp */,
 				774BEE4D13303C5800713179 /* Vector3.h */,
+				774BEE4F1330537000713179 /* RNG.h */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
