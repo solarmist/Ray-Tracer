@@ -22,12 +22,8 @@
     //Use double on 64-bit OSs, float otherwise
     #ifdef _64_BIT
         typedef double colorPrecision;
-        #define ONE 1.0f
-        #define ZERO 0.0f
     #else
         typedef float colorPrecision;
-        #define ONE 1.0f
-        #define ZERO 0.0f
     #endif
 #endif
 
@@ -116,12 +112,12 @@ inline rgb& rgb::operator=(const rgb & right_op){
 }
 
 inline void rgb::clamp(){
-    if (_r > ONE) _r = ONE;
-    if (_g > ONE) _g = ONE;
-    if (_b > ONE) _b = ONE;
-    if (_r < ZERO) _r = ZERO;
-    if (_g < ZERO) _g = ZERO;
-    if (_b < ZERO) _b = ZERO;
+    if (_r > 1.0f) _r = 1.0f;
+    if (_g > 1.0f) _g = 1.0f;
+    if (_b > 1.0f) _b = 1.0f;
+    if (_r < 0.0f) _r = 0.0f;
+    if (_g < 0.0f) _g = 0.0f;
+    if (_b < 0.0f) _b = 0.0f;
 }
 
 inline ostream& operator<<(ostream & out, const rgb & the_rgb){
