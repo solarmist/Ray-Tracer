@@ -37,7 +37,7 @@ public:
     void initFromWV( const Vector3& w, const Vector3& v);
 
     friend istream &operator>>(istream &is, ONB &t);
-    friend ostream &operator<<(ostream &os, ONB &t);
+    friend ostream &operator<<(ostream &os, const ONB &t);
     friend bool operator==(const ONB& o1, const ONB& o2);
     
     //Get a component from ONB basis

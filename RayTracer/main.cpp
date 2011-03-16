@@ -18,15 +18,16 @@
 
 
 #include <iostream>
+#include "Vector3.h"
 #include "RNG.h"
 
 int main (int argc, const char * argv[])
 {
     RNG random;
+    Vector3 v(0.3f,1.0f,12.8f);
     // insert code here...
     std::cout << "Hello, World!" << sizeof(precision) << std::endl;
-    std::cout << "Hello, World!" << random() << std::endl;
-    std::cout << "Hello, World!" << random() << std::endl;
+    std::cout << "Hello, World!" << v << std::endl;
     std::cout << "Hello, World!" << random() << std::endl;
         std::cout << "Hello, World!" << random() << std::endl;
 

@@ -55,12 +55,11 @@ public:
     int indexOfMinAbsComponent() const;
     int indexOfMaxAbsComponent() const;
     
-    
     friend bool operator==(const Vector3& v1, const Vector3& v2);
     friend bool operator!=(const Vector3& v1, const Vector3& v2);
     
     friend istream &operator>>(istream &is, Vector3 &t);
-    friend ostream &operator<<(ostream &os, Vector3 &t);
+    friend ostream &operator<<(ostream &os, const Vector3 &t);
     
     friend Vector3 operator+(const Vector3& v1, const Vector3& v2);
     friend Vector3 operator-(const Vector3& v1, const Vector3& v2);
@@ -98,7 +97,7 @@ inline precision Vector3::length() const
 inline precision Vector3::squaredLength() const
     {return e[0]*e[0] + e[1]+e[1] + e[2]*e[2];}
 
-void Vector3::makeUnitVector()
+inline void Vector3::makeUnitVector()
     {*this = *this / (*this).length();}
 
 
