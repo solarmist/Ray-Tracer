@@ -16,7 +16,7 @@
 
 class Sphere : public Shape{
 public:
-    Sphere(const Vector3& _center, const precision _radius, const rgb& _color);
+    Sphere(const Vector3& _center, const double _radius, const rgb& _color);
     //BBox boundingBox() const;
     bool hit(const Ray& r, precision tmin, precision tmax, precision time, HitRecord& record) const;
     bool shadowHit(const Ray& r, precision tmin, precision tmax, precision time, HitRecord& record) const;

@@ -8,10 +8,10 @@
 
 #include "Sphere.h"
 
-Sphere::Sphere(const Vector3& _center, const precision _radius, const rgb& _color)
-    :center(_center),radius(_radius),color(_color) {}
+Sphere::Sphere(const Vector3& _center, const double _radius, const rgb& _color)
+    :center(_center), radius(_radius), color(_color) {}
 
-//BBox boundingBox() const;
+//BBox Sphere::boundingBox() const;
 
 bool Sphere::hit(const Ray& r, precision tmin, precision tmax, precision time, HitRecord& record) const{
     Vector3 temp = r.origin() - center;
@@ -34,8 +34,8 @@ bool Sphere::hit(const Ray& r, precision tmin, precision tmax, precision time, H
             return false;
         
         //We have a valid hit
-        record.t = t;
-        record.normal = unitVector(r.origin() + t * r.direction() - center);
+        record.t = (precision)t;
+        record.normal = unitVector(r.origin() + (precision)t * r.direction() - center);
         record.color = color;
         
         return true;

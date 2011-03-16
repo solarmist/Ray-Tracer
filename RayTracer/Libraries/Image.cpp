@@ -56,7 +56,7 @@ bool Image::set(int x, int y, const rgb &color){
 
 void Image::gammaCorrect(colorPrecision gamma){
     rgb temp;
-    colorPrecision power = 1.0 / gamma;
+    colorPrecision power = (colorPrecision)1.0 / gamma;
     for (int i = 0; i < nx; i++) 
         for (int j = 0; j < ny; j++){
             temp = raster[i][j];
@@ -134,8 +134,8 @@ void Image::readPPM(string file_name){
             in.get(red);
             in.get(green);
             in.get(blue);
-            raster[col][row] = rgb( (colorPrecision)((unsigned char)red) / 255.0,
-                                    (colorPrecision)((unsigned char)green) / 255.0,
-                                    (colorPrecision)((unsigned char)blue) / 255.0);
+            raster[col][row] = rgb( (colorPrecision)((unsigned char)red) / (colorPrecision)255.0,
+                                    (colorPrecision)((unsigned char)green) / (colorPrecision)255.0,
+                                    (colorPrecision)((unsigned char)blue) / (colorPrecision)255.0);
         }
 }

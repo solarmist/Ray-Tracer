@@ -48,8 +48,8 @@ public:
     rgb& operator-=(const rgb & right_op);
     rgb& operator*=(const rgb & right_op);
     rgb& operator/=(const rgb & right_op);
-    rgb& operator*=(float right_op);
-    rgb& operator/=(float right_op);
+    rgb& operator*=(colorPrecision right_op);
+    rgb& operator/=(colorPrecision right_op);
     
     //Urinary operators
     rgb operator+()const {return *this;}
@@ -61,7 +61,6 @@ public:
     friend rgb operator*(const rgb & c, precision f);
     friend rgb operator*(precision f, const rgb & c);
     friend rgb operator/(const rgb & c, precision f);
-    friend rgb operator*(const rgb & c, precision f);
     friend rgb operator*(const rgb & c1, const rgb & c2);
     friend rgb operator/(const rgb & c1, const rgb & c2);
     friend rgb operator+(const rgb & c1, const rgb & c2);

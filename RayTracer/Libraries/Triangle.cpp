@@ -9,7 +9,7 @@
 #include "Triangle.h"
 
 Triangle::Triangle(const Vector3& _p0, const Vector3& _p1, const Vector3& _p2, const rgb& _color)
-    :p0(_p0),p1(_p1),p2(_p2),color(_color){}
+    :p0(_p0), p1(_p1), p2(_p2), color(_color){}
 
 bool Triangle::hit(const Ray& r, precision tmin, precision tmax, precision time, HitRecord& record) const{
     precision tval;
