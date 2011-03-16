@@ -79,13 +79,13 @@ void Image::writePPM(ostream &out){
     //Scan across the rows from bottom to top
     for(row = ny - 1 ; row >= 0; row--)
         for(col = 0 ; col < nx; col++){
-            ired   = (unsigned int) (256*raster[col][row]._r);
-            igreen = (unsigned int) (256*raster[col][row]._g);
-            iblue  = (unsigned int) (256*raster[col][row]._b);
+            ired   = (unsigned int) (256 * raster[col][row]._r);
+            igreen = (unsigned int) (256 * raster[col][row]._g);
+            iblue  = (unsigned int) (256 * raster[col][row]._b);
             
-            if(ired>255)   ired   = 255;
-            if(igreen>255) igreen = 255;
-            if(iblue>255)  iblue  = 255;
+            if(ired > 255)   ired   = 255;
+            if(igreen > 255) igreen = 255;
+            if(iblue > 255)  iblue  = 255;
             
             red   = (unsigned char) (ired);
             green = (unsigned char) (igreen);

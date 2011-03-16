@@ -8,24 +8,7 @@
 #ifndef _RGB_H_
 #define _RGB_H_ 1
 
-
-#ifndef precision
-    //Use double on 64-bit OSs, float otherwise
-    #ifdef _64_BIT
-        typedef double precision;
-    #else
-        typedef float precision;
-    #endif
-#endif
-
-#ifndef colorPrecision
-    //Use double on 64-bit OSs, float otherwise
-    #ifdef _64_BIT
-        typedef double colorPrecision;
-    #else
-        typedef float colorPrecision;
-    #endif
-#endif
+typedef float colorPrecision;
 
 #include <iostream>
 using namespace std;
@@ -58,9 +41,9 @@ public:
     void clamp();
     
     friend ostream& operator<<(ostream & out, const rgb & the_rgb);
-    friend rgb operator*(const rgb & c, precision f);
-    friend rgb operator*(precision f, const rgb & c);
-    friend rgb operator/(const rgb & c, precision f);
+    friend rgb operator*(const rgb & c, colorPrecision f);
+    friend rgb operator*(colorPrecision f, const rgb & c);
+    friend rgb operator/(const rgb & c, colorPrecision f);
     friend rgb operator*(const rgb & c1, const rgb & c2);
     friend rgb operator/(const rgb & c1, const rgb & c2);
     friend rgb operator+(const rgb & c1, const rgb & c2);
