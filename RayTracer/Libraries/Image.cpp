@@ -109,7 +109,7 @@ void Image::readPPM(string file_name){
     
     char ch, type;
     char red, green, blue;
-    int i, j, cols, rows;
+    int col, row, cols, rows;
     int num;
     
     //Read in header info
@@ -122,15 +122,15 @@ void Image::readPPM(string file_name){
     
     //Allocate raster
     raster = new rgb*[nx];
-    for (i = 0; i < nx; i++)
+    for (int i = 0; i < nx; i++)
         raster[i] = new rgb[ny];
     
     //Clean up newline
     in.get(ch);
     
     //Store PPM pixel values in raster
-    for(int row = ny - 1 ; row >= 0; row--)
-        for(int col = 0 ; col < nx; col++){
+    for(row = ny - 1 ; row >= 0; row--)
+        for(col = 0 ; col < nx; col++){
             in.get(red);
             in.get(green);
             in.get(blue);
