@@ -23,6 +23,7 @@ public:
         {return data[1];}
     Vector3 pointAtParameter(precision t) const
         {return data[0] + t * data[1];}
+    friend ostream &operator<<(ostream &os, const Ray &r);
     
     Vector3 data[2];
 };
