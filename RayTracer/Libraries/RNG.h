@@ -22,12 +22,18 @@
 class RNG
 {
 public:
-    RNG(unsigned long long _seed = 7564231ULL)
+
+    RNG(unsigned long long _seed = 7563846514231ULL)
     {
         seed        = _seed;
-        mult        = 62089911ULL;
-        llong_max   = 4294967295ULL;
-        float_max   = 4294967295.0f;
+        mult        = 620394626989911ULL;
+        llong_max   = 18446744073709551615UL;
+        float_max   = 18446744073709551615.0f;
+        
+        if (sizeof(precision) < 8) {
+            llong_max = 4294967295ULL;
+            float_max = 4294967295.0f;
+        }
         
     }
     precision operator()();
@@ -35,7 +41,7 @@ public:
     unsigned long long seed;
     unsigned long long mult;
     unsigned long long llong_max;
-    precision float_max
+    precision float_max;
 };
 
 inline precision RNG::operator()(){
