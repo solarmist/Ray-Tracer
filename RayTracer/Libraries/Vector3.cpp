@@ -8,7 +8,7 @@
 
 #include "Vector3.h"
 
-istream & operator>>(istream &is, Vector3 &t){
+istream & operator>>(istream & is, Vector3 & t){
     precision temp;
     is >> temp;
     t.e[0] = temp;
@@ -20,7 +20,7 @@ istream & operator>>(istream &is, Vector3 &t){
     return is;
 }
 
-ostream & operator<<(ostream &os, Vector3 &t){
+ostream & operator<<(ostream & os, const Vector3 & t){
     os << '('
         << t.e[0] << ' '
         << t.e[1] << ' '
