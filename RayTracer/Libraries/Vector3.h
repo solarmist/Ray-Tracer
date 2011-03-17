@@ -146,7 +146,7 @@ inline int Vector3::indexOfMaxComponent() const{
     int index = 0;
     precision temp = e[0];
     if(e[1] > temp) {temp = e[1]; index = 1;}
-    if(e[2] > temp) index = 2;;
+    if(e[2] > temp) index = 2;
     
     return index;
 }

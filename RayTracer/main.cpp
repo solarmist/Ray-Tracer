@@ -30,12 +30,12 @@ int main ()
     
     //Geometery
     vector<Shape *> shapes;
-    shapes.push_back(new Sphere(Vector3(50, 50, -100), 
+    shapes.push_back(new Sphere(Vector3(250, 250, -1000), 
                                 150, 
                                 rgb(.2f, .2f, .8f)) );
     shapes.push_back(new Triangle(Vector3(300.0f, 600.0f, -800.0f), 
-                                  Vector3(0.0f, 100.0f, -1000.0f), 
-                                  Vector3(450.0f, 20.0f, -1000.0f), 
+                                  Vector3(0.0f, 100.0f, -10000.0f), 
+                                  Vector3(450.0f, 20.0f, -100.0f), 
                                   rgb(.8f, .2f, .2f)));
     
     Image im(width, height);
