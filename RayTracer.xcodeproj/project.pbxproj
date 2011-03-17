@@ -12,6 +12,7 @@
 		774BEE4E13303C5800713179 /* Vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 774BEE4C13303C5800713179 /* Vector3.cpp */; };
 		774BEE5213306D9500713179 /* ONB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 774BEE5013306D9400713179 /* ONB.cpp */; };
 		77C764D51331A98900C8C1C3 /* Vector2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77C764D31331A98700C8C1C3 /* Vector2.cpp */; };
+		77C764D91331AC2800C8C1C3 /* Sample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77C764D71331AC2500C8C1C3 /* Sample.cpp */; };
 		77F222851331219400285B41 /* Triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77F222831331219400285B41 /* Triangle.cpp */; };
 		77F222881331228700285B41 /* Sphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77F222861331228700285B41 /* Sphere.cpp */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,8 @@
 		774BEE541330A34000713179 /* Ray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ray.h; path = Libraries/Ray.h; sourceTree = "<group>"; };
 		77C764D31331A98700C8C1C3 /* Vector2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Vector2.cpp; path = Libraries/Vector2.cpp; sourceTree = "<group>"; };
 		77C764D41331A98800C8C1C3 /* Vector2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Vector2.h; path = Libraries/Vector2.h; sourceTree = "<group>"; };
+		77C764D71331AC2500C8C1C3 /* Sample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Sample.cpp; path = Libraries/Sample.cpp; sourceTree = "<group>"; };
+		77C764D81331AC2700C8C1C3 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sample.h; path = Libraries/Sample.h; sourceTree = "<group>"; };
 		77F2228113311F8F00285B41 /* Shape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shape.h; path = Libraries/Shape.h; sourceTree = "<group>"; };
 		77F222831331219400285B41 /* Triangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Triangle.cpp; path = Libraries/Triangle.cpp; sourceTree = "<group>"; };
 		77F222841331219400285B41 /* Triangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Triangle.h; path = Libraries/Triangle.h; sourceTree = "<group>"; };
@@ -96,6 +99,8 @@
 				774BEE4913302ECE00713179 /* Image.cpp */,
 				774BEE4A13302ECE00713179 /* Image.h */,
 				774BEE471330221F00713179 /* rgb.h */,
+				77C764D71331AC2500C8C1C3 /* Sample.cpp */,
+				77C764D81331AC2700C8C1C3 /* Sample.h */,
 				774BEE4C13303C5800713179 /* Vector3.cpp */,
 				774BEE4D13303C5800713179 /* Vector3.h */,
 				77C764D31331A98700C8C1C3 /* Vector2.cpp */,
@@ -169,6 +174,7 @@
 				77F222851331219400285B41 /* Triangle.cpp in Sources */,
 				77F222881331228700285B41 /* Sphere.cpp in Sources */,
 				77C764D51331A98900C8C1C3 /* Vector2.cpp in Sources */,
+				77C764D91331AC2800C8C1C3 /* Sample.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
