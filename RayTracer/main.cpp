@@ -30,7 +30,7 @@ int main ()
     
     //Geometery
     vector<Shape *> shapes;
-    shapes.push_back(new Sphere(Vector3(250, 250, -1000), 
+    shapes.push_back(new Sphere(Vector3(50, 50, -100), 
                                 150, 
                                 rgb(.2f, .2f, .8f)) );
     shapes.push_back(new Triangle(Vector3(300.0f, 600.0f, -800.0f), 
