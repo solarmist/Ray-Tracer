@@ -15,7 +15,6 @@ Sphere::Sphere(const Vector3& _center, const double _radius, const rgb& _color)
 
 bool Sphere::hit(const Ray& r, precision tmin, precision tmax, precision time, HitRecord& record) const{
     Vector3 temp = r.origin() - center;
-    double r2 = radius * radius;
     
     double a = dot(r.direction(), r.direction());
     double b = 2 * dot(r.direction(), temp);
