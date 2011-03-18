@@ -1,0 +1,7 @@
+This is a simple ray tracer to learn the basics of ray tracing.
+
+It is based on the Ray Tracer oulined in Peter Shirley's book. I've made changes here and there where I've found something interesting to enhance.
+
+The goal is to evenually port this to Objective-C and add OpenCL and multicore support.
+
+Last updated by solarmist 03/17/11
