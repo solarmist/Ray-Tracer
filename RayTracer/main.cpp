@@ -46,6 +46,8 @@ int main ()
     
     multiJitter(samples, numSamples);
     
+    cubicSplineFilter(samples, numSamples);
+    
     //Loop over pixels
     for (int i = 0; i < width; i++) 
         for (int j = 0; j < height; j++) {
@@ -55,7 +57,7 @@ int main ()
 
             //Do all the samples for each pixel and average the color
             for (int multi = 0; multi < numSamples; multi++) {
-                Ray r(Vector3(i - 0.5f +samples[multi].x(), j - 0.5f + samples[multi].y(), 0), dir);
+                Ray r(Vector3(i + samples[multi].x(), j + samples[multi].y(), 0), dir);
                 //Loop over list of Shapes
                 for (int k = 0; k < shapes.size(); k++)
                     if(shapes[k]->hit(r, .00001f, tmax, 0.0f, rec)){
@@ -72,7 +74,7 @@ int main ()
             im.set(i, j, color);
         }
     fstream file;
-    file.open("/Users/solarmist/Documents/Graphics/RayTracer/test.ppm", fstream::out);
+    file.open("/Users/solarmist/Documents/Graphics/RayTracer/MultiSampleWCubicSplineFilter.ppm", fstream::out);
     im.writePPM(file);
     file.close();
     cout << "Done" << endl;

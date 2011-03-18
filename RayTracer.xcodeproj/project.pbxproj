@@ -30,6 +30,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		770B70C3133422070059474A /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Camera.h; path = Libraries/Camera.h; sourceTree = "<group>"; };
 		774BEE3A13301D7A00713179 /* RayTracer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RayTracer; sourceTree = BUILT_PRODUCTS_DIR; };
 		774BEE3E13301D7A00713179 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		774BEE4013301D7A00713179 /* RayTracer.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = RayTracer.1; sourceTree = "<group>"; };
@@ -95,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				774BEE4F1330537000713179 /* RNG.h */,
+				770B70C3133422070059474A /* Camera.h */,
 				774BEE5313309F2A00713179 /* DynArray.h */,
 				774BEE4913302ECE00713179 /* Image.cpp */,
 				774BEE4A13302ECE00713179 /* Image.h */,
