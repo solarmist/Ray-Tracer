@@ -25,7 +25,7 @@ int main ()
     bool is_a_hit;
     precision tmax;         //Max valid t parameter
     Vector3 dir(0, 0, -1);  //Direction of viewing rays
-    const int numSamples = 1;
+    const int numSamples = 100;
     Vector2 samples[numSamples];
     int height, width;
     height = 900;
