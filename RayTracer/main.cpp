@@ -19,6 +19,8 @@ using namespace std;
 
 int main ()
 {
+    cout<<"Test";
+    
     HitRecord rec;
     bool is_a_hit;
     precision tmax;         //Max valid t parameter
