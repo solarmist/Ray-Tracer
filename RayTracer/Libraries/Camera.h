@@ -45,6 +45,7 @@ public:
         Vector3 origin = center + 2.0f * (xi1 - 0.5f) * lens_radius * uvw.u() +
                         2.0f * (xi2 - 0.5f) * lens_radius * uvw.v();
         Vector3 target = corner + across * a + up * b;
+        Vector3 direction = target - origin;
         return Ray(origin, unitVector(target - origin));
     }
     

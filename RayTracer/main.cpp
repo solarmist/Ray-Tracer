@@ -10,6 +10,7 @@
 #include <vector>
 #include <iostream>
 #include "Camera.h"
+#include "DynSphere.h"
 #include "Image.h"
 #include "rgb.h"
 #include "Sample.h"
@@ -26,29 +27,37 @@ int main ()
     //Camera(Vector3 center, Vector3 gaze, Vector3 vup, 
     //       precision apeture, left, right, bottom, top, distance)
     //Apeture is diameter of lens
-    Camera cam(Vector3(0,0,2), Vector3(0,0,-2), Vector3(0,1,0),  5.6f,  -2.0f, 2.0f,  -2.0f,  2.0f,  2.0f);
     bool is_a_hit;
     precision tmax;         //Max valid t parameter
-    Vector3 dir(0, 0, -1);  //Direction of viewing rays
-    const int numSamples = 1;
+    const int numSamples = 10;
     Vector2 samples[numSamples];
+
+
+    Vector3 dir(0, 0, -1);  //Direction of viewing rays
     int height, width;
     height = 500;
     width = 500;
     rgb background(.2f, .2f, .2f);
     
+    //Camera settings
+    Vector3 center(0,0,2), gaze(0,0,-2), vup(0,1,0);
+    precision apeture = 5.6f, distance = 2.0f;
+    precision left = -2.0f, right = 2.0f;
+    precision bottom = -2.0f, top = 2.0f;
+    Camera cam(center, gaze, vup,  apeture,  left, right,  bottom,  top,  distance);
+    int nx = 500, ny = 500;
+    
     //Geometery
     vector<Shape *> shapes;
-    shapes.push_back(new Sphere(Vector3(0, 0, -0), 
-                                2, 
-                                rgb(.2f, .8f, .2f)) );
-    /*shapes.push_back(new Sphere(Vector3(250, 250, -1000), 
+    shapes.push_back(new Sphere(Vector3(0, 0, 0), 
+                                sqrt(2), rgb(.2f, .8f, .2f)) );
+    shapes.push_back(new Sphere(Vector3(250, 250, -1000), 
                                 150, 
                                 rgb(.2f, .2f, .8f)) );
     shapes.push_back(new Triangle(Vector3(300.0f, 600.0f, -800.0f), 
                                   Vector3(0.0f, 100.0f, -1000.0f), 
                                   Vector3(450.0f, 20.0f, -1000.0f), 
-                                  rgb(.8f, .2f, .2f)));*/
+                                  rgb(.8f, .2f, .2f)));//*/
     
     Image im(width, height);
     
@@ -65,11 +74,11 @@ int main ()
 
             //Do all the samples for each pixel and average the color
             for (int multi = 0; multi < numSamples; multi++) {
-                Ray r = cam.getRay(i +  samples[multi].x(), j + samples[multi].y(), 0, 0.0f);
+                Ray r = cam.getRay((i + 0.5f + samples[multi].x()) / nx, (j + 0.5f + samples[multi].y())/ny, 0.5f, 0.5f);
                 //Ray r(Vector3(i + samples[multi].x(), j + samples[multi].y(), 0), dir);
                 //Loop over list of Shapes
                 for (int k = 0; k < shapes.size(); k++)
-                    if(shapes[k]->hit(r, .00001f, tmax, 0.0f, rec)){
+                    if(shapes[k]->hit(r, .00001f, tmax, 0, rec)){
                         tmax = rec.t;
                         is_a_hit = true;
                     }
