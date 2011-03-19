@@ -29,7 +29,7 @@ int main ()
     //Apeture is diameter of lens
     bool is_a_hit;
     precision tmax;         //Max valid t parameter
-    const int numSamples = 10;
+    const int numSamples = 100;
     Vector2 samples[numSamples];
 
 
@@ -50,7 +50,7 @@ int main ()
     //Geometery
     vector<Shape *> shapes;
     shapes.push_back(new Sphere(Vector3(0, 0, 0), 
-                                sqrt(2), rgb(.2f, .8f, .2f)) );
+                                sqrt(2), rgb(.1f, .1f, .1f)) );
     shapes.push_back(new Sphere(Vector3(250, 250, -1000), 
                                 150, 
                                 rgb(.2f, .2f, .8f)) );
@@ -83,8 +83,12 @@ int main ()
                         is_a_hit = true;
                     }
                 
-                if(is_a_hit)
-                    color += rec.color / numSamples;
+                if(is_a_hit){
+                    rgb add(.9f * dot(rec.normal, Vector3(1,0,0)),
+                            .9f * dot(rec.normal, Vector3(0,1,0)),
+                            .9f * dot(rec.normal, Vector3(0,0,1)));
+                    color += (rec.color + add) / numSamples;
+                }
                 else
                     color += background / numSamples;
 
