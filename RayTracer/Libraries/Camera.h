@@ -29,7 +29,7 @@ public:
         d = orig.d;
     }
     
-    Camera(Vector3 c, Vector3 gaze, Vector3 up, precision apeture, precision left,
+    Camera(Vector3 c, Vector3 gaze, Vector3 vup, precision apeture, precision left,
            precision right, precision bottom, precision top, precision distance)
     :center(c), d(distance), u0(left), u1(right), v0(bottom), v1(top){
         lens_radius = apeture / 2.0f;

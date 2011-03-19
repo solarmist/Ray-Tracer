@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		770B70C713342E370059474A /* DynSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 770B70C513342E370059474A /* DynSphere.cpp */; };
 		774BEE3F13301D7A00713179 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 774BEE3E13301D7A00713179 /* main.cpp */; };
 		774BEE4B13302ECE00713179 /* Image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 774BEE4913302ECE00713179 /* Image.cpp */; };
 		774BEE4E13303C5800713179 /* Vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 774BEE4C13303C5800713179 /* Vector3.cpp */; };
@@ -31,6 +32,8 @@
 
 /* Begin PBXFileReference section */
 		770B70C3133422070059474A /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Camera.h; path = Libraries/Camera.h; sourceTree = "<group>"; };
+		770B70C513342E370059474A /* DynSphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DynSphere.cpp; path = Libraries/DynSphere.cpp; sourceTree = "<group>"; };
+		770B70C613342E370059474A /* DynSphere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DynSphere.h; path = Libraries/DynSphere.h; sourceTree = "<group>"; };
 		774BEE3A13301D7A00713179 /* RayTracer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RayTracer; sourceTree = BUILT_PRODUCTS_DIR; };
 		774BEE3E13301D7A00713179 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		774BEE4013301D7A00713179 /* RayTracer.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = RayTracer.1; sourceTree = "<group>"; };
@@ -115,6 +118,8 @@
 				77F222841331219400285B41 /* Triangle.h */,
 				77F222861331228700285B41 /* Sphere.cpp */,
 				77F222871331228700285B41 /* Sphere.h */,
+				770B70C513342E370059474A /* DynSphere.cpp */,
+				770B70C613342E370059474A /* DynSphere.h */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 				77F222881331228700285B41 /* Sphere.cpp in Sources */,
 				77C764D51331A98900C8C1C3 /* Vector2.cpp in Sources */,
 				77C764D91331AC2800C8C1C3 /* Sample.cpp in Sources */,
+				770B70C713342E370059474A /* DynSphere.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
