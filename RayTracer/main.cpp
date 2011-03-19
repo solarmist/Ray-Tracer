@@ -34,9 +34,7 @@ int main ()
 
 
     Vector3 dir(0, 0, -1);  //Direction of viewing rays
-    int height, width;
-    height = 500;
-    width = 500;
+    int nx = 500, ny = 500;
     rgb background(.2f, .2f, .2f);
     
     //Camera settings
@@ -45,13 +43,13 @@ int main ()
     precision left = -2.0f, right = 2.0f;
     precision bottom = -2.0f, top = 2.0f;
     Camera cam(center, gaze, vup,  apeture,  left, right,  bottom,  top,  distance);
-    int nx = 500, ny = 500;
+
     
     //Geometery
     vector<Shape *> shapes;
     shapes.push_back(new Sphere(Vector3(0, 0, 0), 
-                                sqrt(2), rgb(.1f, .1f, .1f)) );
-    shapes.push_back(new Sphere(Vector3(250, 250, -1000), 
+                                sqrt(2), rgb(.2f, .8f, .2f)) );
+    /*shapes.push_back(new Sphere(Vector3(250, 250, -1000), 
                                 150, 
                                 rgb(.2f, .2f, .8f)) );
     shapes.push_back(new Triangle(Vector3(300.0f, 600.0f, -800.0f), 
@@ -59,15 +57,15 @@ int main ()
                                   Vector3(450.0f, 20.0f, -1000.0f), 
                                   rgb(.8f, .2f, .2f)));//*/
     
-    Image im(width, height);
+    Image im(nx, ny);
     
     multiJitter(samples, numSamples);
     
     cubicSplineFilter(samples, numSamples);
     
     //Loop over pixels
-    for (int i = 0; i < width; i++) 
-        for (int j = 0; j < height; j++) {
+    for (int i = 0; i < nx; i++) 
+        for (int j = 0; j < ny; j++) {
             rgb color(0,0,0);
             tmax = 100000.0f;
             is_a_hit = false;
@@ -84,10 +82,20 @@ int main ()
                     }
                 
                 if(is_a_hit){
-                    rgb add(.9f * dot(rec.normal, Vector3(1,0,0)),
-                            .9f * dot(rec.normal, Vector3(0,1,0)),
-                            .9f * dot(rec.normal, Vector3(0,0,1)));
+                    precision num = 2.9f;
+                    rgb add;
+                    if (rec.normal.y() < 0) {
+                        add.setRed(num * dot(rec.normal, Vector3(0,1,0)));
+                        add.setGreen(num * dot(rec.normal, Vector3(0,1,0)));
+                        add.setBlue(num * dot(rec.normal, Vector3(0,1,0)));
+                    }
+                    else{
+                        add.setRed(num * dot(rec.normal, Vector3(0,1,0)));
+                        add.setGreen(num * dot(rec.normal, Vector3(0,1,0)));
+                        add.setBlue(num * dot(rec.normal, Vector3(0,1,0)));
+                    }
                     color += (rec.color + add) / numSamples;
+                    color.clamp();
                 }
                 else
                     color += background / numSamples;
