@@ -13,6 +13,7 @@
 #include "DynSphere.h"
 #include "Image.h"
 #include "rgb.h"
+#include "RNG.h"
 #include "Sample.h"
 #include "Shape.h"
 #include "Sphere.h"
@@ -27,79 +28,83 @@ int main ()
     //Camera(Vector3 center, Vector3 gaze, Vector3 vup, 
     //       precision apeture, left, right, bottom, top, distance)
     //Apeture is diameter of lens
-    bool is_a_hit;
-    precision tmax;         //Max valid t parameter
-    const int numSamples = 100;
-    Vector2 samples[numSamples];
+    bool isAHit;
+    RNG rng;
+    precision tMax;         //Max valid t parameter
+    const int numImage = 20;
+    const int numLens = 20;
+    Vector2 imageSamples[numImage], lensSamples[numLens];
+    //precision minTime = 1.0f, maxTime = numSamples;
 
 
     Vector3 dir(0, 0, -1);  //Direction of viewing rays
-    int nx = 500, ny = 500;
+    int nx = 800, ny = nx * 2 / 3;
     rgb background(.2f, .2f, .2f);
     
     //Camera settings
     Vector3 center(0,0,2), gaze(0,0,-2), vup(0,1,0);
-    precision apeture = 5.6f, distance = 2.0f;
-    precision left = -2.0f, right = 2.0f;
-    precision bottom = -2.0f, top = 2.0f;
-    Camera cam(center, gaze, vup,  apeture,  left, right,  bottom,  top,  distance);
+    precision apeture = 2.0f;
+    //Size of the film; keep height in proportion with width compared to image size
+    precision width = 36, height = width * ny / nx;
+    precision f = 5.6f, s = 2;
+    //precision i = s * f / (s - f);
+    precision u1 = width * (s - f)/(2 * f), u0 = -u1;
+    precision v1 = height * (s - f)/(2 * f), v0 = -v1;
+    Camera cam(center, gaze, vup,  apeture,  u0, u1,  v0,  v1,  s);
 
-    
     //Geometery
     vector<Shape *> shapes;
-    shapes.push_back(new Sphere(Vector3(0, 0, 0), 
-                                sqrt(2), rgb(.2f, .8f, .2f)) );
-    /*shapes.push_back(new Sphere(Vector3(250, 250, -1000), 
-                                150, 
+    shapes.push_back(new Sphere(Vector3(0, 0, -2), 
+                                (precision)sqrt(2), rgb(.2f, .8f, .2f)));//, minTime, maxTime));
+    shapes.push_back(new Sphere(Vector3(10, 20, -20), 
+                                2, 
                                 rgb(.2f, .2f, .8f)) );
-    shapes.push_back(new Triangle(Vector3(300.0f, 600.0f, -800.0f), 
-                                  Vector3(0.0f, 100.0f, -1000.0f), 
-                                  Vector3(450.0f, 20.0f, -1000.0f), 
+    shapes.push_back(new Triangle(Vector3(300.0f, 600.0f, -200.0f), 
+                                  Vector3(0.0f, 100.0f, -500.0f), 
+                                  Vector3(450.0f, 20.0f, -500.0f), 
                                   rgb(.8f, .2f, .2f)));//*/
     
     Image im(nx, ny);
     
-    multiJitter(samples, numSamples);
+    multiJitter(imageSamples, numImage);
+    multiJitter(lensSamples, numLens);
     
-    cubicSplineFilter(samples, numSamples);
+    //Samples are in the range [-2,2]
+    cubicSplineFilter(imageSamples, numImage);
+    cubicSplineFilter(lensSamples, numLens);
+    
+    for (int i = 0; i < numLens; i++){
+        lensSamples[i].setX( (lensSamples[i].x() + 2.0f) / 4.0f);
+        lensSamples[i].setY( (lensSamples[i].y() + 2.0f) / 4.0f);
+    }
     
     //Loop over pixels
     for (int i = 0; i < nx; i++) 
         for (int j = 0; j < ny; j++) {
             rgb color(0,0,0);
-            tmax = 100000.0f;
-            is_a_hit = false;
+            tMax = 100000.0f;
+            isAHit = false;
 
             //Do all the samples for each pixel and average the color
-            for (int multi = 0; multi < numSamples; multi++) {
-                Ray r = cam.getRay((i + 0.5f + samples[multi].x()) / nx, (j + 0.5f + samples[multi].y())/ny, 0.5f, 0.5f);
+            for (int imageS = 0; imageS < numImage; imageS++) {
+                //Lens samples need to be in (0,1) range.
+                //Randomly pair a lens sample with a pixel sample
+                Ray r = cam.getRay((i + 0.5f + imageSamples[imageS].x()) / nx, 
+                                   (j + 0.5f + imageSamples[imageS].y()) / ny, 
+                                   lensSamples[(int)(drand48() * numLens / numImage)].x(), 
+                                   lensSamples[(int)(drand48() * numLens / numImage)].y());
                 //Ray r(Vector3(i + samples[multi].x(), j + samples[multi].y(), 0), dir);
                 //Loop over list of Shapes
                 for (int k = 0; k < shapes.size(); k++)
-                    if(shapes[k]->hit(r, .00001f, tmax, 0, rec)){
-                        tmax = rec.t;
-                        is_a_hit = true;
+                    if(shapes[k]->hit(r, .00001f, tMax, 1, rec)){
+                        tMax = rec.t;
+                        isAHit = true;
                     }
                 
-                if(is_a_hit){
-                    precision num = 2.9f;
-                    rgb add;
-                    if (rec.normal.y() < 0) {
-                        add.setRed(num * dot(rec.normal, Vector3(0,1,0)));
-                        add.setGreen(num * dot(rec.normal, Vector3(0,1,0)));
-                        add.setBlue(num * dot(rec.normal, Vector3(0,1,0)));
-                    }
-                    else{
-                        add.setRed(num * dot(rec.normal, Vector3(0,1,0)));
-                        add.setGreen(num * dot(rec.normal, Vector3(0,1,0)));
-                        add.setBlue(num * dot(rec.normal, Vector3(0,1,0)));
-                    }
-                    color += (rec.color + add) / numSamples;
-                    color.clamp();
-                }
+                if(isAHit)
+                    color += rec.color / (numImage);
                 else
-                    color += background / numSamples;
-
+                    color += background / (numImage);
             }
             im.set(i, j, color);
         }
