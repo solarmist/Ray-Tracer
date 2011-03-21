@@ -6,7 +6,7 @@
 //  Copyright 2011 solarmist. All rights reserved.
 //
 #ifndef _RAY_H_
-#define _RAY_H_
+#define _RAY_H_ 1
 
 #include "Vector3.h"
 

@@ -7,7 +7,7 @@
 //
 
 #ifndef _SPHERE_H_
-#define _SPHERE_H_
+#define _SPHERE_H_ 1
 
 #include "Shape.h"
 #include "Vector3.h"

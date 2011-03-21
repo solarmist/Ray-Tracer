@@ -6,7 +6,7 @@
 //  Copyright 2011 solarmist. All rights reserved.
 //
 #ifndef _CAMERA_H_
-#define _CAMERA_H_
+#define _CAMERA_H_ 1
 
 #include "ONB.h"
 #include "Ray.h"

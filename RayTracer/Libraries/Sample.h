@@ -6,7 +6,7 @@
 //  Copyright 2011 solarmist. All rights reserved.
 //
 #ifndef _SAMPLE_H_
-#define _SAMPLE_H_
+#define _SAMPLE_H_ 1
 
 #ifndef precision
     //Use double on 64-bit OSs, float otherwise

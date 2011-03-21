@@ -7,7 +7,7 @@
 //
 
 #ifndef _TRIANGLE_H_
-#define _TRIANGLE_H_
+#define _TRIANGLE_H_ 1
 
 #include "Shape.h"
 #include "Vector3.h"

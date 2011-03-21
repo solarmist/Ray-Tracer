@@ -7,7 +7,7 @@
 //
 
 #ifndef _SHAPE_H_
-#define _SHAPE_H_
+#define _SHAPE_H_ 1
 
 #include "Ray.h"
 #include "Vector3.h"

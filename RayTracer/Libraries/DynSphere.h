@@ -6,7 +6,7 @@
 //  Copyright 2011 solarmist. All rights reserved.
 //
 #ifndef _DYN_SPHERE_H_
-#define _DYN_SPHERE_H_
+#define _DYN_SPHERE_H_ 1
 
 #include "Ray.h"
 #include "rgb.h"
