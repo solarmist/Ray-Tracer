@@ -35,19 +35,19 @@ bool UVSphere::hit(const Ray& r, precision tmin, precision tmax, precision time,
         
         //We have a valid hit
         record.t = (precision)t;
-        record.hit_p = (r.origin() + t * r.direction());
+        record.hit_p = (r.origin() + (precision)t * r.direction());
         //record.normal = unitVector(r.origin() + (precision)t * r.direction() - center);
         Vector3 n = record.normal = (record.hit_p - center) / radius;
         
         //Calculate UV coordinates
-        precision twopi = 2 * M_PI;
-        precision one_over_2pi = M_1_PI / 2 ;
+        precision twopi = precision(2 * M_PI);
+        precision one_over_2pi = precision(M_1_PI / 2) ;
         precision theta = acos(n.z());
         precision phi   = atan2(n.y(), n.x());
         if (phi < 0.0f)
             phi += twopi;
         
-        record.uv = Vector2(phi * one_over_2pi, (M_PI - theta) * M_1_PI);
+        record.uv = Vector2(precision(phi * one_over_2pi), precision((M_PI - theta) * M_1_PI));
         return true;
     }
     
