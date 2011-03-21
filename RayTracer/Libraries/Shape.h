@@ -21,6 +21,7 @@ struct HitRecord
     precision t;
     Vector3 normal;
     rgb color;
+    Texture* hit_tex;
 };
 
 class Shape
