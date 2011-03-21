@@ -22,7 +22,9 @@ struct HitRecord
     precision t;
     Vector3 normal;
     rgb color;
-    Texture* hit_tex;
+    Vector2 uv;         //We will use this for 2d textures
+    Vector3 hit_p;      //The point of intersection
+    Texture* hit_tex;   //The nearest intersected object's texture
 };
 
 class Shape

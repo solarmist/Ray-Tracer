@@ -15,6 +15,7 @@
 		776765C31336EF53002174C3 /* SolidNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 776765C11336EF53002174C3 /* SolidNoise.cpp */; };
 		776765CA1336FD67002174C3 /* MarbleTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 776765C81336FD62002174C3 /* MarbleTexture.cpp */; };
 		776765CD1336FD91002174C3 /* NoiseTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 776765CB1336FD8C002174C3 /* NoiseTexture.cpp */; };
+		776765D01337103E002174C3 /* UVSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 776765CE13371037002174C3 /* UVSphere.cpp */; };
 		77C764D51331A98900C8C1C3 /* Vector2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77C764D31331A98700C8C1C3 /* Vector2.cpp */; };
 		77C764D91331AC2800C8C1C3 /* Sample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77C764D71331AC2500C8C1C3 /* Sample.cpp */; };
 		77F222851331219400285B41 /* Triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77F222831331219400285B41 /* Triangle.cpp */; };
@@ -58,6 +59,8 @@
 		776765C91336FD64002174C3 /* MarbleTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MarbleTexture.h; path = Libraries/MarbleTexture.h; sourceTree = "<group>"; };
 		776765CB1336FD8C002174C3 /* NoiseTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NoiseTexture.cpp; path = Libraries/NoiseTexture.cpp; sourceTree = "<group>"; };
 		776765CC1336FD8E002174C3 /* NoiseTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoiseTexture.h; path = Libraries/NoiseTexture.h; sourceTree = "<group>"; };
+		776765CE13371037002174C3 /* UVSphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UVSphere.cpp; path = Libraries/UVSphere.cpp; sourceTree = "<group>"; };
+		776765CF1337103A002174C3 /* UVSphere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UVSphere.h; path = Libraries/UVSphere.h; sourceTree = "<group>"; };
 		77C764D31331A98700C8C1C3 /* Vector2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Vector2.cpp; path = Libraries/Vector2.cpp; sourceTree = "<group>"; };
 		77C764D41331A98800C8C1C3 /* Vector2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Vector2.h; path = Libraries/Vector2.h; sourceTree = "<group>"; };
 		77C764D71331AC2500C8C1C3 /* Sample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Sample.cpp; path = Libraries/Sample.cpp; sourceTree = "<group>"; };
@@ -139,6 +142,8 @@
 				77F222871331228700285B41 /* Sphere.h */,
 				770B70C513342E370059474A /* DynSphere.cpp */,
 				770B70C613342E370059474A /* DynSphere.h */,
+				776765CE13371037002174C3 /* UVSphere.cpp */,
+				776765CF1337103A002174C3 /* UVSphere.h */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -205,6 +210,7 @@
 				776765C31336EF53002174C3 /* SolidNoise.cpp in Sources */,
 				776765CA1336FD67002174C3 /* MarbleTexture.cpp in Sources */,
 				776765CD1336FD91002174C3 /* NoiseTexture.cpp in Sources */,
+				776765D01337103E002174C3 /* UVSphere.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
