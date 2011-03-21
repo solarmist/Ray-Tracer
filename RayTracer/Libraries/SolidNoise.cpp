@@ -39,7 +39,7 @@ SolidNoise::SolidNoise(){
     for (i = 14; i >= 0; i--) {
         int target = int(random() * i);
         int temp = phi[i + 1];
-        phi[i + 1] = phi[target]
+        phi[i + 1] = phi[target];
         phi[target] = temp;
     }
 }
@@ -91,7 +91,7 @@ precision SolidNoise::noise(const Vector3 &p) const{
     fu = p.x() - precision(fi);
     fv = p.y() - precision(fj);
     fw = p.z() - precision(fk);
-    sum = 0.0;
+    sum = 0.0f;
     
     v = Vector3(fu, fv, fw);
     sum += knot(fi, fj, fk, v);
