@@ -23,6 +23,9 @@ public:
     Image(int width, int height, rgb background);
     ~Image();
     //return false if x or y are out of bounds, else true
+    int width(){return nx;}
+    int height(){return ny;}
+    rgb getPixel(int x, int y){return raster[x][y];}
     bool set(int x, int y, const rgb & color);
     void gammaCorrect(colorPrecision gamma);
     //Outputs PPM image to 'out'
