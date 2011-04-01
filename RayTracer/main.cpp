@@ -31,12 +31,15 @@ int main ()
     bool isAHit;
     RNG rng;
     precision tMax;         //Max valid t parameter
-    const int numImage = 20;
-    const int numLens = 20;
+    
+    //Number of samples
+    const int numImage = 10;
+    const int numLens = 1;
     Vector2 imageSamples[numImage], lensSamples[numLens];
     //precision minTime = 1.0f, maxTime = numSamples;
 
 
+    Vector3 origin(0,0,0);
     Vector3 dir(0, 0, -1);  //Direction of viewing rays
     int nx = 800, ny = nx * 2 / 3;
     rgb background(.2f, .2f, .2f);
@@ -57,7 +60,7 @@ int main ()
     shapes.push_back(new Sphere(Vector3(0, 0, -2), 
                                 (precision)sqrt(2), rgb(.2f, .8f, .2f)));//, minTime, maxTime));
     shapes.push_back(new Sphere(Vector3(10, 20, -20), 
-                                2, 
+                                5, 
                                 rgb(.2f, .2f, .8f)) );
     shapes.push_back(new Triangle(Vector3(300.0f, 600.0f, -200.0f), 
                                   Vector3(0.0f, 100.0f, -500.0f), 
@@ -73,6 +76,13 @@ int main ()
     cubicSplineFilter(imageSamples, numImage);
     cubicSplineFilter(lensSamples, numLens);
     
+    //Scale image samples to [-1,1]
+    for (int i = 0; i < numLens; i++){
+        imageSamples[i].setX( (imageSamples[i].x() + 1.0f) / 2.0f);
+        imageSamples[i].setY( (imageSamples[i].y() + 1.0f) / 2.0f);
+    }
+    
+    //Scale lens samples to [0,1]
     for (int i = 0; i < numLens; i++){
         lensSamples[i].setX( (lensSamples[i].x() + 2.0f) / 4.0f);
         lensSamples[i].setY( (lensSamples[i].y() + 2.0f) / 4.0f);
@@ -87,12 +97,16 @@ int main ()
 
             //Do all the samples for each pixel and average the color
             for (int imageS = 0; imageS < numImage; imageS++) {
+                //Project rays out into the image from the origin to the size of the viewing window
+                Vector3 direction((i + 0.5f + imageSamples[imageS].x()) - (nx / 2),
+                                (j + 0.5f + imageSamples[imageS].y()) - (ny / 2), 0);
+                Ray r(origin, direction + nx / 10 * dir);
                 //Lens samples need to be in (0,1) range.
                 //Randomly pair a lens sample with a pixel sample
-                Ray r = cam.getRay((i + 0.5f + imageSamples[imageS].x()) / nx, 
-                                   (j + 0.5f + imageSamples[imageS].y()) / ny, 
-                                   lensSamples[(int)(drand48() * numLens / numImage)].x(), 
-                                   lensSamples[(int)(drand48() * numLens / numImage)].y());
+                //Ray r = cam.getRay((i + 0.5f + imageSamples[imageS].x()) / nx, 
+                                   //(j + 0.5f + imageSamples[imageS].y()) / ny,
+                                   //lensSamples[(int)(drand48() * numLens / numImage)].x(), 
+                                   //lensSamples[(int)(drand48() * numLens / numImage)].y());
                 //Ray r(Vector3(i + samples[multi].x(), j + samples[multi].y(), 0), dir);
                 //Loop over list of Shapes
                 for (int k = 0; k < shapes.size(); k++)
