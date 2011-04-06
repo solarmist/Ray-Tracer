@@ -9,11 +9,13 @@
 #ifndef _SHAPE_H_
 #define _SHAPE_H_ 1
 
+#include "Material.h"
 #include "Ray.h"
 #include "rgb.h"
 #include "Texture.h"
 #include "Vector3.h"
 
+class ONB;
 class Ray;
 class rgb;
 
@@ -25,6 +27,15 @@ struct HitRecord
     Vector2 uv;         //We will use this for 2d textures
     Vector3 hit_p;      //The point of intersection
     Texture* hit_tex;   //The nearest intersected object's texture
+};
+
+struct SurfaceHitRecord {
+    precision t;
+    Vector3 p;          //Point of interscetion
+    Vector3 exp;        //Point of interscetion for texture mapping
+    ONB uvw;            //w is the outward normal
+    Vector2 uv;
+    Material *mat_ptr;
 };
 
 class Shape
