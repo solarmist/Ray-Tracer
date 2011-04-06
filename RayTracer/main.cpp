@@ -89,8 +89,8 @@ int main ()
     }
     
     //Loop over pixels
-    for (int i = 0; i < nx; i++) 
-        for (int j = 0; j < ny; j++) {
+    for (int x = 0; x < nx; x++) 
+        for (int y = 0; y < ny; y++) {
             rgb color(0,0,0);
             tMax = 100000.0f;
             isAHit = false;
@@ -98,8 +98,8 @@ int main ()
             //Do all the samples for each pixel and average the color
             for (int imageS = 0; imageS < numImage; imageS++) {
                 //Project rays out into the image from the origin to the size of the viewing window
-                Vector3 direction((i + 0.5f + imageSamples[imageS].x()) - (nx / 2),
-                                (j + 0.5f + imageSamples[imageS].y()) - (ny / 2), 0);
+                Vector3 direction((x + 0.5f + imageSamples[imageS].x()) - (nx / 2),
+                                (y + 0.5f + imageSamples[imageS].y()) - (ny / 2), 0);
                 Ray r(origin, direction + nx / 10 * dir);
                 //Lens samples need to be in (0,1) range.
                 //Randomly pair a lens sample with a pixel sample
@@ -120,7 +120,7 @@ int main ()
                 else
                     color += background / (numImage);
             }
-            im.set(i, j, color);
+            im.set(x, y, color);
         }
     fstream file;
     file.open("/Users/solarmist/Documents/Graphics/RayTracer/test.ppm", fstream::out);
