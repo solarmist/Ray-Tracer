@@ -17,11 +17,11 @@ public:
     Mesh(){}
     Texture* getTexture()const {return tex;}
     
-    Texture* tex;
-    Vector3* verts;
-    VertexUV* vertUVs;
-    VertexN* vertNS;
+    Texture*   tex;
+    Vector3*   verts;
+    VertexUV*  vertUVs;
+    VertexN*   vertNS;
     VertexUVN* vertUVNS;
-}
+};
 
 #endif //_MESH_H_
