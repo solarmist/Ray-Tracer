@@ -24,6 +24,10 @@ public:
     void setGreen(colorPrecision green) {_g = green;}
     void setBlue(colorPrecision blue)   {_b = blue;}
     
+    colorPrecision r(){return _r;}
+    colorPrecision g(){return _g;}
+    colorPrecision b(){return _b;}
+    
     //Assignment operators
     //these operators perform no clamping
     rgb& operator=(const rgb & right_op);

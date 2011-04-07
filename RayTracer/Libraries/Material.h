@@ -33,7 +33,8 @@ public:
                               const Vector3&, //outgoing vector v0
                               const Vector3&, //outgoing vector v1
                               const Vector3&, //Texture point
-                              const Vector2&) //Texture coordinate
+                              const Vector2&, //Texture coordinate
+                              rgb&)           //BRDF
     {return false;}
     
     virtual bool diffuseDirection(const ONB&,       //ONB of hit point

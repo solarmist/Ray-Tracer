@@ -44,6 +44,7 @@ public:
     
     void setX(precision _x) {e[0] = _x;}
     void setY(precision _y) {e[1] = _y;}
+    void scramble(){e[0]=(precision)drand48();e[1]=(precision)drand48();}
     precision minComponent() const;
     precision maxComponent() const;
     precision minAbsComponent() const;
