@@ -11,7 +11,10 @@
 #include "ONB.h"
 #include "Ray.h"
 #include "rgb.h"
+#include "Shape.h"
 #include "Vector2.h"
+
+struct SurfaceHitRecord;
 
 class Material {
 public:
@@ -43,7 +46,7 @@ public:
                                   const Vector2&,   //Texture coordinate
                                   Vector2&,         //Random seed
                                   rgb&,             //Value returned by texture
-                                  Vector3&)         //Outgoing vector
+                                  Vector3&)         //Reflection vector
     {return false;}
     
     virtual bool specularDirection(const ONB&,       //ONB of hit point
@@ -52,7 +55,7 @@ public:
                                   const Vector2&,   //Texture coordinate
                                   Vector2&,         //Random seed
                                   rgb&,             //Value returned by texture
-                                  Vector3&)         //Outgoing vector
+                                  Vector3&)         //Reflection vector
     {return false;}
     
     virtual bool transmissionDirection(const ONB&,      //ONB of hit point
@@ -62,8 +65,18 @@ public:
                                        Vector2&,        //Random seed
                                        rgb&,            //extinction color
                                        precision&,      //fresnel_scale
-                                       Vector3&)        //Outgoing vector
+                                       Vector3&)        //Refraction vector
     {return false;}
+    
+    virtual bool scatterDirection(const Vector3&,           //incident vector
+                                  const SurfaceHitRecord&,  //hit we are shading
+                                  Vector2&,                 //Random seed
+                                  rgb&,                     //Color to attenuate by
+                                  bool&,                    //Count emitted light&
+                                  precision&,               //BFRD scale
+                                  Vector3&)                 //Reflection vector
+    {return false;}
+
 
     virtual bool isDiffuse() {return false;}
     virtual bool isSpecular() {return false;}

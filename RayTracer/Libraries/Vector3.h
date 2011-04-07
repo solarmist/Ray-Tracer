@@ -77,6 +77,8 @@ public:
     friend Vector3 minVector(const Vector3& v1, const Vector3& v2);
     friend Vector3 maxVector(const Vector3& v1, const Vector3& v2);
     friend Vector3 cross(const Vector3& v1, const Vector3& v2);
+    friend Vector3 reflect(const Vector3& d, const Vector3& n);
+    //friend Vector3 refract(const Vector3& d, const Vector3& n, const precision fromRefracIndex, const precision intoRefracIndex);
     friend precision dot(const Vector3& v1, const Vector3& v2);
     friend precision tripleProduct(const Vector3& v1, const Vector3& v2, const Vector3& v3);
     
@@ -94,6 +96,7 @@ inline Vector3 Vector3::operator-() const
 
 inline precision Vector3::length() const
     {return sqrt(e[0]*e[0] + e[1]+e[1] + e[2]*e[2]);}
+
 inline precision Vector3::squaredLength() const
     {return e[0]*e[0] + e[1]+e[1] + e[2]*e[2];}
 
@@ -255,5 +258,7 @@ inline Vector3 cross(const Vector3& v1, const Vector3& v2){
 inline precision dot(const Vector3& v1, const Vector3& v2)
     {return v1.x() * v2.x() + v1.y() * v2.y() + v1.z() * v2.z();}
 
+inline Vector3 reflect(const Vector3& d, const Vector3& n)
+    {return d - 2 * dot(d, n) / n.squaredLength() * n;}
 
 #endif // _VECTOR3_H_

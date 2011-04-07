@@ -13,12 +13,14 @@ rgb DiffuseMaterial::ambientResponse(const ONB&, const Vector3&, const Vector3& 
     return R->value(uv, p);    
 }
  
-bool DiffuseMaterial::explicitBrdf(const ONB&, const Vector3&, const Vector3&, const Vector3& p, const Vector2& uv, rgb& brdf){
+bool DiffuseMaterial::explicitBrdf(const ONB&, const Vector3&, const Vector3&, 
+                                   const Vector3& p, const Vector2& uv, rgb& brdf){
     brdf = (precision)M_1_PI * R->value(uv, p); //This returned brdf by reference
     return true;
 }
 
-bool DiffuseMaterial::diffuseDirection(const ONB& uvw, const Vector3&, const Vector3& p, const Vector2& uv, Vector2& seed, rgb& color, Vector3& v_out){
+bool DiffuseMaterial::diffuseDirection(const ONB& uvw, const Vector3&, const Vector3& p, 
+                                       const Vector2& uv, Vector2& seed, rgb& color, Vector3& reflection){
     precision pi = (precision)M_PI;
     precision phi = 2 * pi * seed.x();
     precision r = sqrt(seed.y());
@@ -27,7 +29,7 @@ bool DiffuseMaterial::diffuseDirection(const ONB& uvw, const Vector3&, const Vec
     precision z = sqrt(1- x*x - y*y);
     
     color = R->value(uv, p);
-    v_out = x * uvw.u() + y * uvw.v() + z * uvw.w();
+    reflection = x * uvw.u() + y * uvw.v() + z * uvw.w();
     
     seed.scramble();
     return true;

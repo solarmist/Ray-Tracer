@@ -15,6 +15,7 @@
 #include "Texture.h"
 #include "Vector3.h"
 
+class Material;
 class ONB;
 class Ray;
 class rgb;
@@ -35,7 +36,7 @@ struct SurfaceHitRecord {
     Vector3 exp;        //Point of interscetion for texture mapping
     ONB uvw;            //w is the outward normal
     Vector2 uv;
-    Material *mat_ptr;
+    Material* mat_ptr;
 };
 
 class Shape

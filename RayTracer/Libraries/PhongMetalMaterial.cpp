@@ -12,7 +12,8 @@
 rgb PhongMetalMaterial::ambientResponse(const ONB&, const Vector3&, const Vector3& p, const Vector2& uv){
     return R->value(uv, p);}
 
-bool PhongMetalMaterial::specularDirection(const ONB& uvw, const Vector3& v_in, const Vector3& p, const Vector2& uv, Vector2& seed, rgb& color, Vector3& v_out){
+bool PhongMetalMaterial::specularDirection(const ONB& uvw, const Vector3& v_in, const Vector3& p, 
+                                           const Vector2& uv, Vector2& seed, rgb& color, Vector3& reflection){
     precision pi = (precision)M_PI;
     precision phi = 2 * pi * seed.x();
     precision exponent = phong_exp->value(uv, p).r();
@@ -27,10 +28,10 @@ bool PhongMetalMaterial::specularDirection(const ONB& uvw, const Vector3& v_in, 
     basis.initFromW(w);
     
     color = R->value(uv, p);
-    v_out = x * basis.u() + y * basis.v() + z * basis.w();
+    reflection = x * basis.u() + y * basis.v() + z * basis.w();
     
     if(exponent < 10000)
         seed.scramble();
     
-    return (dot(v_out, uvw.w()) > 0);
+    return (dot(reflection, uvw.w()) > 0);
 }
