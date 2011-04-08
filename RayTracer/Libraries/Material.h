@@ -18,27 +18,27 @@ struct SurfaceHitRecord;
 
 class Material {
 public:
-    virtual bool emits() const {return false;}
+    virtual bool emits() const = 0;//{return false;}
     
-    virtual rgb emittedRadiance(const ONB&,     //ONB of hit point
-                                const Vector3&, //outgoing direction from light
-                                const Vector3&, //Texture point
-                                const Vector2&) //Texture coordinate
-    {return rgb(0.0f,0.0f,0.0f);}
+    virtual rgb emittedRadiance(const ONB&,             //ONB of hit point
+                                const Vector3&,         //outgoing direction from light
+                                const Vector3&,         //Texture point
+                                const Vector2&) = 0;    //Texture coordinate
+    //{return rgb(0.0f,0.0f,0.0f);}
     
-    virtual rgb ambientResponse(const ONB&,     //ONB of hit point
-                                const Vector3&, //outgoing direction from light
-                                const Vector3&, //Texture point
-                                const Vector2&) //Texture coordinate
-    {return rgb(0.0f,0.0f,0.0f);}
+    virtual rgb ambientResponse(const ONB&,             //ONB of hit point
+                                const Vector3&,         //outgoing direction from light
+                                const Vector3&,         //Texture point
+                                const Vector2&) = 0;    //Texture coordinate
+    //{return rgb(0.0f,0.0f,0.0f);}
     
     virtual bool explicitBrdf(const ONB&,     //ONB of hit point
                               const Vector3&, //outgoing vector v0
                               const Vector3&, //outgoing vector v1
                               const Vector3&, //Texture point
                               const Vector2&, //Texture coordinate
-                              rgb&)           //BRDF
-    {return false;}
+                              rgb&) = 0;      //BRDF
+    //{return false;}
     
     virtual bool diffuseDirection(const ONB&,       //ONB of hit point
                                   const Vector3&,   //incident vector
@@ -46,17 +46,17 @@ public:
                                   const Vector2&,   //Texture coordinate
                                   Vector2&,         //Random seed
                                   rgb&,             //Value returned by texture
-                                  Vector3&)         //Reflection vector
-    {return false;}
+                                  Vector3&) = 0;    //Reflection vector
+    //{return false;}
     
     virtual bool specularDirection(const ONB&,       //ONB of hit point
-                                  const Vector3&,   //incident vector
-                                  const Vector3&,   //Texture point
-                                  const Vector2&,   //Texture coordinate
-                                  Vector2&,         //Random seed
-                                  rgb&,             //Value returned by texture
-                                  Vector3&)         //Reflection vector
-    {return false;}
+                                   const Vector3&,   //incident vector
+                                   const Vector3&,   //Texture point
+                                   const Vector2&,   //Texture coordinate
+                                   Vector2&,         //Random seed
+                                   rgb&,             //Value returned by texture
+                                   Vector3&) = 0;    //Reflection vector
+    //{return false;}
     
     virtual bool transmissionDirection(const ONB&,      //ONB of hit point
                                        const Vector3&,  //incident unit vector
@@ -64,9 +64,9 @@ public:
                                        const Vector2&,  //Texture coordinate
                                        Vector2&,        //Random seed
                                        rgb&,            //extinction color
-                                       precision&,      //fresnel_scale
-                                       Vector3&)        //Refraction vector
-    {return false;}
+                                       precision&,      //fresnelScale
+                                       Vector3&) = 0;   //Refraction vector
+    //{return false;}
     
     virtual bool scatterDirection(const Vector3&,           //incident vector
                                   const SurfaceHitRecord&,  //hit we are shading
@@ -74,16 +74,16 @@ public:
                                   rgb&,                     //Color to attenuate by
                                   bool&,                    //Count emitted light&
                                   precision&,               //BFRD scale
-                                  Vector3&)                 //Reflection vector
-    {return false;}
+                                  Vector3&) = 0;            //Reflection vector
+    //{return false;}
 
 
-    virtual bool isDiffuse() {return false;}
-    virtual bool isSpecular() {return false;}
-    virtual bool isTranmissive() {return false;}
-    virtual int causticPhotons() {return 0;}
-    virtual int globalPhotons() {return 0;}
-    virtual rgb photonColor() {return rgb(0.0f, 0.0f, 0.0f);}
+    virtual bool isDiffuse() = 0;// {return false;}
+    virtual bool isSpecular() = 0;// {return false;}
+    virtual bool isTranmissive() = 0;// {return false;}
+    virtual int causticPhotons() = 0;// {return 0;}
+    virtual int globalPhotons() = 0;// {return 0;}
+    virtual rgb photonColor() = 0;// {return rgb(0.0f, 0.0f, 0.0f);}
     
 };
 

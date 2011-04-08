@@ -17,14 +17,14 @@ rgb DiffSpecMaterial::ambientResponse(const ONB& uvw, const Vector3& v_in, const
     precision P = (R + 0.5f) / 2.0f;
     
     if(rng() <= P)
-        return spec_mat->ambientResponse(uvw, v_in, p, uv);
+        return specMat->ambientResponse(uvw, v_in, p, uv);
     else
-        return diff_mat->ambientResponse(uvw, v_in, p, uv);
+        return diffMat->ambientResponse(uvw, v_in, p, uv);
 }
 
 bool DiffSpecMaterial::explicitBrdf(const ONB& uvw, const Vector3& v0, const Vector3& v1, 
                                     const Vector3& p, const Vector2& uv, rgb& brdf){
-    return diff_mat->explicitBrdf(uvw, v0, v1, p, uv, brdf);
+    return diffMat->explicitBrdf(uvw, v0, v1, p, uv, brdf);
 }
 
 bool DiffSpecMaterial::scatterDirection(const Vector3& v_in, const SurfaceHitRecord& rec, Vector2& seed, 
@@ -39,10 +39,10 @@ bool DiffSpecMaterial::scatterDirection(const Vector3& v_in, const SurfaceHitRec
     //We assume that spec_mat and diff_mat return brfd_scales of 1
     if(rng() <= P){
         brdf = R / P;
-        return spec_mat->scatterDirection(v_in, rec, seed, color, CEL, brdf, reflection);
+        return specMat->scatterDirection(v_in, rec, seed, color, CEL, brdf, reflection);
     }
     else{
         brdf = (1.0f - R) / (1.0f - P);
-        return diff_mat->scatterDirection(v_in, rec, seed, color, CEL, brdf, reflection);
+        return diffMat->scatterDirection(v_in, rec, seed, color, CEL, brdf, reflection);
     }
 }

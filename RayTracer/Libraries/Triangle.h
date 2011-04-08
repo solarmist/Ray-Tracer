@@ -17,8 +17,10 @@
 class Triangle : public Shape{
 public:
     Triangle(const Vector3& _p0, const Vector3& _p1, const Vector3& _p2, const rgb& _color);
-    bool hit(const Ray& r, precision tmin, precision tmax, precision time, HitRecord& record) const;
-    bool shadowHit(const Ray& r, precision tmin, precision tmax, precision time, HitRecord& record) const;
+    bool randomPoint(const Vector3& viewPoint, const Vector2& seed, precision time, 
+                             Vector3& onLight, Vector3& N, precision& pdf, rgb& radiance) const;
+    bool hit(const Ray& r, precision tMin, precision tMax, precision time, HitRecord& record) const;
+    bool shadowHit(const Ray& r, precision tMin, precision tMax, precision time, HitRecord& record) const;
     
     Vector3 p0;
     Vector3 p1;

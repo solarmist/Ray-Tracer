@@ -15,8 +15,8 @@
 
 class MarbleTexture : public Texture {
 public:
-    MarbleTexture(precision stripes_per_unit, precision _scale = 5.0f, int _octaves = 8){
-        freq = precision(M_PI * stripes_per_unit);
+    MarbleTexture(precision stripesPerUnit, precision _scale = 5.0f, int _octaves = 8){
+        freq = precision(M_PI * stripesPerUnit);
         scale = _scale;
         octaves = _octaves;
         c0 = rgb(0.8f, 0.8f, 0.8f);
@@ -25,10 +25,10 @@ public:
     }
     
     MarbleTexture(const rgb& _c0, const rgb& _c1, const rgb& _c2, 
-                  precision stripes_per_unit, precision _scale = 3.0f, 
+                  precision stripesPerUnit, precision _scale = 3.0f, 
                   int _octaves = 8)
         :c0(_c0), c1(_c1), c2(_c2){
-        freq = precision(M_PI + stripes_per_unit);
+        freq = precision(M_PI + stripesPerUnit);
         scale = _scale;
         octaves = _octaves;    
     }

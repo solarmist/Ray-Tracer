@@ -15,22 +15,22 @@ class Texture;
 class PhongMetalMaterial : public Material {
 public:
     PhongMetalMaterial(Texture *rt, Texture *et)
-    {R = rt; phong_exp = et;}
+    {R = rt; phongExp = et;}
     
-    virtual rgb ambientResponse(const ONB&,        //ONB of hit point
-                                const Vector3&,    //outgoing direction from light
-                                const Vector3&,    //Texture point
-                                const Vector2&);   //Texture coordinate
+    rgb ambientResponse(const ONB&,        //ONB of hit point
+                        const Vector3&,    //outgoing direction from light
+                        const Vector3&,    //Texture point
+                        const Vector2&);   //Texture coordinate
     
-    virtual bool specularDirection(const ONB&,      //ONB of hit point
-                                   const Vector3&,  //incident vector
-                                   const Vector3&,  //Texture point
-                                   const Vector2&,  //Texture coordinate
-                                   Vector2&,        //Random seed
-                                   rgb&,            //Value returned by texture
-                                   Vector3&);       //Outgoing vector
+    bool specularDirection(const ONB&,      //ONB of hit point
+                           const Vector3&,  //incident vector
+                           const Vector3&,  //Texture point
+                           const Vector2&,  //Texture coordinate
+                           Vector2&,        //Random seed
+                           rgb&,            //Value returned by texture
+                           Vector3&);       //Outgoing vector
     Texture *R;
-    Texture *phong_exp;
+    Texture *phongExp;
 };
 
 #endif //_PHONG_METAL_MATERIAL_H_

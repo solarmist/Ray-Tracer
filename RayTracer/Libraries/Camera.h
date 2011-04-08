@@ -21,7 +21,7 @@ public:
         across = orig.across;
         up = orig.up;
         uvw = orig.uvw;
-        lens_radius = orig.lens_radius;
+        lensRadius = orig.lensRadius;
         u0 = orig.u0;
         u1 = orig.u1;
         v0 = orig.v0;
@@ -32,7 +32,7 @@ public:
     Camera(Vector3 c, Vector3 gaze, Vector3 vup, precision apeture, precision left,
            precision right, precision bottom, precision top, precision distance)
     :center(c), d(distance), u0(left), u1(right), v0(bottom), v1(top){
-        lens_radius = apeture / 2.0f;
+        lensRadius = apeture / 2.0f;
         uvw.initFromWV(-gaze, vup);
         corner = center + u0 * uvw.u() + v0 * uvw.v() - d * uvw.w();
         across = (u1 - u0) * uvw.u();
@@ -42,8 +42,8 @@ public:
     //a and b are the pixel positions
     //xi1 and xi2 are the lens samples in the range (0, 1)^2
     Ray getRay(precision a, precision b, precision xi1, precision xi2){
-        Vector3 origin = center + 2.0f * (xi1 - 0.5f) * lens_radius * uvw.u() +
-                        2.0f * (xi2 - 0.5f) * lens_radius * uvw.v();
+        Vector3 origin = center + 2.0f * (xi1 - 0.5f) * lensRadius * uvw.u() +
+                        2.0f * (xi2 - 0.5f) * lensRadius * uvw.v();
         Vector3 target = corner + across * a + up * b;
         Vector3 direction = target - origin;
         return Ray(origin, unitVector(target - origin));
@@ -51,7 +51,7 @@ public:
     
     Vector3 center, corner, across, up;
     ONB uvw;
-    precision lens_radius;
+    precision lensRadius;
     precision u0, u1, v0, v1;
     precision d;
 };

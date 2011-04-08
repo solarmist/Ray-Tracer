@@ -8,12 +8,52 @@
 
 #include "Sphere.h"
 
-Sphere::Sphere(const Vector3& _center, const double _radius, const rgb& _color)
-    :center(_center), radius((precision)_radius), color(_color) {}
+Sphere::Sphere(const Vector3& _center, const precision _radius, const rgb& _color)
+    :center(_center), radius(_radius), color(_color) {}
 
 //BBox Sphere::boundingBox() const;
 
-bool Sphere::hit(const Ray& r, precision tmin, precision tmax, precision time, HitRecord& record) const{
+bool Sphere::randomPoint(const Vector3& viewPoint, const Vector2& seed, precision time, 
+                         Vector3& lightPoint, Vector3& N, precision& pdf, rgb& radiance) const{
+    precision d = (viewPoint - center).length();
+    if (d < radius) 
+        return false;
+    
+    //internal angle of cone surrounding light seen from viewpoint
+    precision sinAlphaMax = radius / d;
+    precision cosAlphaMax = sqrt(1 - sinAlphaMax * sinAlphaMax);
+    precision q = 1 / (2 * (precision)M_PI * (1 - cosAlphaMax));
+    
+    precision cosAlpha = 1 + seed.x() * (cosAlphaMax - 1);
+    precision sinAlpha = sqrt(1 - cosAlpha * cosAlpha);
+    
+    precision phi = 2 * (precision)M_PI * seed.y();
+    precision cosPhi = cos(phi);
+    precision sinPhi = sinf(phi);
+    
+    Vector3 kI(cosPhi * sinAlpha, sinPhi * sinAlpha, cosAlpha);
+    
+    //Construct the local coordinate system UVW where viewpoint is at
+    //the origin and the sphere is at (0, 0, d) in UVW.
+    ONB uvw;
+    uvw.initFromW(center - viewPoint);
+    Ray toLight(viewPoint, 
+                kI.x() * uvw.u() + kI.y() *uvw.v() + kI.z() * uvw.w());
+    
+    SurfaceHitRecord rec;
+    if (this->hit(toLight, 0.00001, 4294967295.0f, time, rec)) {
+        lightPoint = rec.p;
+        precision cosThetaPrime = -dot(rec.uvw.w(), toLight.direction());
+        pdf = q * cosThetaPrime / (lightPoint - viewPoint).squaredLength();
+        N = rec.uvw.w();
+        radiance = matPtr->emittedRadiance(rec.uvw, -toLight.direction(), lightPoint, rec.uv);
+        return true;
+    }
+    else
+        return false;
+}
+
+bool Sphere::hit(const Ray& r, precision tMin, precision tMax, precision time, HitRecord& record) const{
     Vector3 temp = r.origin() - center;
     
     double a = dot(r.direction(), r.direction());
@@ -28,9 +68,9 @@ bool Sphere::hit(const Ray& r, precision tmin, precision tmax, precision time, H
         double t = (- b - discriminant) / (2 * a);
         
         //Now check for a valid interval
-        if(t < tmin)
+        if(t < tMin)
             t = (- b + discriminant) / (2 * a);
-        if(t < tmin || t > tmax)
+        if(t < tMin || t > tMax)
             return false;
         
         //We have a valid hit
@@ -43,7 +83,7 @@ bool Sphere::hit(const Ray& r, precision tmin, precision tmax, precision time, H
     
     return false;
 }
-bool Sphere::shadowHit(const Ray& r, precision tmin, precision tmax, precision time, HitRecord& record) const{
+bool Sphere::shadowHit(const Ray& r, precision tMin, precision tMax, precision time, HitRecord& record) const{
     Vector3 temp = r.origin() - center;
     
     double a = dot(r.direction(), r.direction());
@@ -58,9 +98,9 @@ bool Sphere::shadowHit(const Ray& r, precision tmin, precision tmax, precision t
         double t = (- b - discriminant) / (2 * a);
         
         //Now check for a valid interval
-        if(t < tmin)
+        if(t < tMin)
             t = (- b + discriminant) / (2 * a);
-        if(t < tmin || t > tmax)
+        if(t < tMin || t > tMax)
             return false;
         
         //We have a valid hit

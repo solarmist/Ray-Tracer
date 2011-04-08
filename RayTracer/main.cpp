@@ -65,7 +65,7 @@ int main ()
     shapes.push_back(new Triangle(Vector3(300.0f, 600.0f, -200.0f), 
                                   Vector3(0.0f, 100.0f, -500.0f), 
                                   Vector3(450.0f, 20.0f, -500.0f), 
-                                  rgb(.8f, .2f, .2f)));//*/
+                                  rgb(.8f, .2f, .2f)));
     
     Image im(nx, ny);
     

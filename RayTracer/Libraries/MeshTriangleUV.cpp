@@ -8,12 +8,12 @@
 
 #include "MeshTriangleUV.h"
 
-bool MeshTriangleUV::hit(const Ray& r, precision tmin, precision tmax, precision time, HitRecord& record) const{
-    Vector3 p0( (mesh_ptr->vertUVs[p[0]]).vertex );
-    Vector3 p1( (mesh_ptr->vertUVs[p[1]]).vertex );
-    Vector3 p2( (mesh_ptr->vertUVs[p[2]]).vertex );
+bool MeshTriangleUV::hit(const Ray& r, precision tMin, precision tMax, precision time, HitRecord& record) const{
+    Vector3 p0( (meshPtr->vertUVs[p[0]]).vertex );
+    Vector3 p1( (meshPtr->vertUVs[p[1]]).vertex );
+    Vector3 p2( (meshPtr->vertUVs[p[2]]).vertex );
     
-    precision tval;
+    precision tVal;
     precision A = p0.x() - p1.x();
     precision B = p0.y() - p1.y();
     precision C = p0.z() - p1.z();
@@ -50,19 +50,19 @@ bool MeshTriangleUV::hit(const Ray& r, precision tmin, precision tmax, precision
     if(gamma <= 0.0f || beta + gamma >= 1.0f) 
         return false;
     
-    tval = -(F * AKJB + E * JCAL + D * BLKC) / denom;
+    tVal = -(F * AKJB + E * JCAL + D * BLKC) / denom;
     
-    if(tval >= tmin && tval <= tmax){
-        //if prim is hit, fill hit_rec
+    if(tVal >= tMin && tVal <= tMax){
+        //if prim is hit, fill record
         double alpha = 1.0 - beta - gamma;
-        Vector2 u0( (mesh_ptr->vertUVs[p[0]]).uv );
-        Vector2 u1( (mesh_ptr->vertUVs[p[1]]).uv );
-        Vector2 u2( (mesh_ptr->vertUVs[p[2]]).uv );
+        Vector2 u0( (meshPtr->vertUVs[p[0]]).uv );
+        Vector2 u1( (meshPtr->vertUVs[p[1]]).uv );
+        Vector2 u2( (meshPtr->vertUVs[p[2]]).uv );
         record.uv = Vector2((precision)(alpha * u0.x() + beta * u1.x() + gamma * u0.x()),
                             (precision)(alpha * u0.y() + beta * u1.y() + gamma * u0.y()));
         
-        record.hit_tex = mesh_ptr->getTexture();
-        record.t = tval;
+        record.hitTex = meshPtr->getTexture();
+        record.t = tVal;
         record.normal = unitVector(cross((p1 - p0), (p2-p0)));
         
         return true;
@@ -71,12 +71,12 @@ bool MeshTriangleUV::hit(const Ray& r, precision tmin, precision tmax, precision
     return false;
 }
 
-bool MeshTriangleUV::shadowHit(const Ray& r, precision tmin, precision tmax, precision time, HitRecord& record) const{
-    Vector3 p0( (mesh_ptr->vertUVs[p[0]]).vertex );
-    Vector3 p1( (mesh_ptr->vertUVs[p[1]]).vertex );
-    Vector3 p2( (mesh_ptr->vertUVs[p[2]]).vertex );
+bool MeshTriangleUV::shadowHit(const Ray& r, precision tMin, precision tMax, precision time, HitRecord& record) const{
+    Vector3 p0( (meshPtr->vertUVs[p[0]]).vertex );
+    Vector3 p1( (meshPtr->vertUVs[p[1]]).vertex );
+    Vector3 p2( (meshPtr->vertUVs[p[2]]).vertex );
     
-    precision tval;
+    precision tVal;
     precision A = p0.x() - p1.x();
     precision B = p0.y() - p1.y();
     precision C = p0.z() - p1.z();
@@ -113,7 +113,7 @@ bool MeshTriangleUV::shadowHit(const Ray& r, precision tmin, precision tmax, pre
     if(gamma <= 0.0f || beta + gamma >= 1.0f) 
         return false;
     
-    tval = -(F * AKJB + E * JCAL + D * BLKC) / denom;
+    tVal = -(F * AKJB + E * JCAL + D * BLKC) / denom;
 
-    return (tval >= tmin && tval <= tmax);
+    return (tVal >= tMin && tVal <= tMax);
 }

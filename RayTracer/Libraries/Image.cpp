@@ -60,9 +60,9 @@ void Image::gammaCorrect(colorPrecision gamma){
     for (int i = 0; i < nx; i++) 
         for (int j = 0; j < ny; j++){
             temp = raster[i][j];
-            raster[i][j] = rgb(pow(temp._r, power),
-                               pow(temp._g, power),
-                               pow(temp._b, power));
+            raster[i][j] = rgb(pow(temp.r, power),
+                               pow(temp.g, power),
+                               pow(temp.b, power));
         }
 }
 
@@ -79,9 +79,9 @@ void Image::writePPM(ostream &out){
     //Scan across the rows from bottom to top
     for(row = ny - 1 ; row >= 0; row--)
         for(col = 0 ; col < nx; col++){
-            ired   = (unsigned int) (256 * raster[col][row]._r);
-            igreen = (unsigned int) (256 * raster[col][row]._g);
-            iblue  = (unsigned int) (256 * raster[col][row]._b);
+            ired   = (unsigned int) (256 * raster[col][row].r);
+            igreen = (unsigned int) (256 * raster[col][row].g);
+            iblue  = (unsigned int) (256 * raster[col][row].b);
             
             if(ired > 255)   ired   = 255;
             if(igreen > 255) igreen = 255;
@@ -98,12 +98,12 @@ void Image::writePPM(ostream &out){
 }
 
 //Reads in a binary PPM
-void Image::readPPM(string file_name){
+void Image::readPPM(string filename){
     //Open stream to file
     ifstream in;
-    in.open(file_name.c_str());
+    in.open(filename.c_str());
     if(!in.is_open()){
-        cerr << "ERROR -- Couldn't open the file \'" << file_name << "\'.\n";
+        cerr << "ERROR -- Couldn't open the file \'" << filename << "\'.\n";
         exit(-1);
     }
     

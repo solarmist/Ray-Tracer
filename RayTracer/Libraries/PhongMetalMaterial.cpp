@@ -16,7 +16,7 @@ bool PhongMetalMaterial::specularDirection(const ONB& uvw, const Vector3& v_in, 
                                            const Vector2& uv, Vector2& seed, rgb& color, Vector3& reflection){
     precision pi = (precision)M_PI;
     precision phi = 2 * pi * seed.x();
-    precision exponent = phong_exp->value(uv, p).r();
+    precision exponent = phongExp->value(uv, p).r;
     precision cosTheta = pow(1 - (precision)seed.y(), (precision)(1.0/(exponent + 1)) );
     precision sinTheta = sqrt(1 - cosTheta * cosTheta);
     precision x = sinTheta * cos(phi);

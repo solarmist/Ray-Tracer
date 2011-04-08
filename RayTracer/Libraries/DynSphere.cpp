@@ -8,8 +8,8 @@
 
 #include "DynSphere.h"
 
-DynSphere::DynSphere(const Vector3& _ocenter, precision _radius, const rgb& _color, precision min_time, precision max_time)
-:ocenter(_ocenter), radius((precision)_radius), color(_color), mintime(min_time), maxtime(max_time) {}
+DynSphere::DynSphere(const Vector3& _ocenter, precision _radius, const rgb& _color, precision minTime, precision maxTime)
+:ocenter(_ocenter), radius(_radius), color(_color), minTime(minTime), maxTime(maxTime) {}
 
 bool DynSphere::hit(const Ray& r, precision tmin, precision tmax, precision time, HitRecord& record) const{
     Vector3 new_center = getCenter(time);
@@ -70,7 +70,7 @@ bool DynSphere::shadowHit(const Ray& r, precision tmin, precision tmax, precisio
 }
 
 Vector3 DynSphere::getCenter(precision time) const{
-    precision realtime = time * maxtime + (1.0f - time) * mintime;
+    precision realtime = time * maxTime + (1.0f - time) * minTime;
     return Vector3(ocenter.x() + realtime, 
                    ocenter.y() + realtime,
                    ocenter.z() + realtime);

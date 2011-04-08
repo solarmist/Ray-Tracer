@@ -16,13 +16,13 @@
 class DynSphere : public Shape{
 public:
     DynSphere(const Vector3& _ocenter, precision _radius, const rgb& _color, precision min_time, precision max_time);
-    bool hit(const Ray& r, precision tmin, precision tmax, precision time, HitRecord& record) const;
-    bool shadowHit(const Ray& r, precision tmin, precision tmax, precision time, HitRecord& record) const;
+    bool hit(const Ray& r, precision tMin, precision tMax, precision time, HitRecord& record) const;
+    bool shadowHit(const Ray& r, precision tMin, precision tMax, precision time, HitRecord& record) const;
     Vector3 getCenter(precision time) const;
     
     Vector3 ocenter;
-    precision mintime;
-    precision maxtime;
+    precision minTime;
+    precision maxTime;
     precision radius;
     rgb color;
 };

@@ -83,9 +83,9 @@ bool operator==(const ONB& o1, const ONB& o2)
     {return (o1.u() == o2.u() && o1.v() == o2.v() && o1.w() == o2.w());}
 
 istream & operator>>(istream & is, ONB & t){
-    Vector3 new_u, new_v, new_w;
-    is >> new_u >> new_v >> new_w;
-    t.initFromUV(new_u, new_v);
+    Vector3 newU, newV, newW;
+    is >> newU >> newV >> newW;
+    t.initFromUV(newU, newV);
     
     return is;
 }

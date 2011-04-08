@@ -21,22 +21,22 @@
 class Vector2;
 
 //2D sampling
-void random(Vector2* samples, int num_samples);
-//Jitter assumes num_samples is a perfect square
-void jitter(Vector2* samples, int num_samples);
-void nrooks(Vector2* samples, int num_samples);
-//Multijitter assumes num_samples is a perfect square
-void multiJitter(Vector2* samples, int num_samples);
-void shuffle(Vector2* samples, int num_samples);
+void random(Vector2* samples, int numSamples);
+//Jitter assumes numSamples is a perfect square
+void jitter(Vector2* samples, int numSamples);
+void nrooks(Vector2* samples, int numSamples);
+//Multijitter assumes numSamples is a perfect square
+void multiJitter(Vector2* samples, int numSamples);
+void shuffle(Vector2* samples, int numSamples);
 
-void boxFilter(Vector2* samples, int num_samples);
-void tentFilter(Vector2* samples, int num_samples);
-void cubicSplineFilter(Vector2* samples, int num_samples);
+void boxFilter(Vector2* samples, int numSamples);
+void tentFilter(Vector2* samples, int numSamples);
+void cubicSplineFilter(Vector2* samples, int numSamples);
 
 //1D sampling
-void random(precision* samples, int num_samples);
-void jitter(precision* samples, int num_samples);
-void shuffle(precision* samples, int num_samples);
+void random(precision* samples, int numSamples);
+void jitter(precision* samples, int numSamples);
+void shuffle(precision* samples, int numSamples);
 
 //Helper function for cubicSplineFilter
 inline precision solve(precision r){

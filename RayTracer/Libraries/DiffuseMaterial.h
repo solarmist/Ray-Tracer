@@ -17,25 +17,25 @@ public:
     DiffuseMaterial(Texture *t)
     {R = t;}
     
-     virtual rgb ambientResponse(const ONB&,        //ONB of hit point
-                                 const Vector3&,    //outgoing direction from light
-                                 const Vector3&,    //Texture point
-                                 const Vector2&);   //Texture coordinate
+    rgb ambientResponse(const ONB&,        //ONB of hit point
+                        const Vector3&,    //outgoing direction from light
+                        const Vector3&,    //Texture point
+                        const Vector2&);   //Texture coordinate
     
-     virtual bool explicitBrdf(const ONB&,      //ONB of hit point
-                               const Vector3&,  //outgoing vector v0
-                               const Vector3&,  //outgoing vector v1
-                               const Vector3&,  //Texture point
-                               const Vector2&,  //Texture coordinate
-                               rgb&);           //BRDF
+    bool explicitBrdf(const ONB&,      //ONB of hit point
+                      const Vector3&,  //outgoing vector v0
+                      const Vector3&,  //outgoing vector v1
+                      const Vector3&,  //Texture point
+                      const Vector2&,  //Texture coordinate
+                      rgb&);           //BRDF
     
-     virtual bool diffuseDirection(const ONB&,      //ONB of hit point
-                                   const Vector3&,  //incident vector
-                                   const Vector3&,  //Texture point
-                                   const Vector2&,  //Texture coordinate
-                                   Vector2&,        //Random seed
-                                   rgb&,            //Value returned by texture
-                                   Vector3&);       //Outgoing vector
+    bool diffuseDirection(const ONB&,      //ONB of hit point
+                          const Vector3&,  //incident vector
+                          const Vector3&,  //Texture point
+                          const Vector2&,  //Texture coordinate
+                          Vector2&,        //Random seed
+                          rgb&,            //Value returned by texture
+                          Vector3&);       //Outgoing vector
     Texture *R;
 };
 

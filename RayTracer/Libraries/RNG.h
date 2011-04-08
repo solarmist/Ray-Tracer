@@ -27,12 +27,12 @@ public:
     {
         seed        = _seed;
         mult        = 620394626989911ULL;
-        llong_max   = 18446744073709551615UL;
-        float_max   = 18446744073709551615.0f;
+        llongMax   = 18446744073709551615UL;
+        floatMax   = 18446744073709551615.0f;
         
         if (sizeof(precision) < 8) {
-            llong_max = 4294967295ULL;
-            float_max = 4294967295.0f;
+            llongMax = 4294967295ULL;
+            floatMax = 4294967295.0f;
         }
         
     }
@@ -40,13 +40,13 @@ public:
     
     unsigned long long seed;
     unsigned long long mult;
-    unsigned long long llong_max;
-    precision float_max;
+    unsigned long long llongMax;
+    precision floatMax;
 };
 
 inline precision RNG::operator()(){
     seed = mult * seed;
-    return precision(seed % llong_max) / float_max;
+    return precision(seed % llongMax) / floatMax;
 }
 
 #endif // _RNG_H_

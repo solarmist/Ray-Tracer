@@ -5,8 +5,8 @@
 //  Created by Joshua Olson on 3/15/11.
 //  Copyright 2011 solarmist. All rights reserved.
 //
-#ifndef _RGB_H_
-#define _RGB_H_ 1
+#ifndef rGB_H_
+#define rGB_H_ 1
 
 typedef float colorPrecision;
 
@@ -16,35 +16,35 @@ using namespace std;
 class rgb{
     
 public:
-    rgb() {_r = _g = _b = 0;}
+    rgb() {r = g = b = 0;}
     rgb(colorPrecision red, colorPrecision green, colorPrecision blue);
     rgb(const rgb & original) {*this = original;}
     
-    void setRed(colorPrecision red)     {_r = red;}
-    void setGreen(colorPrecision green) {_g = green;}
-    void setBlue(colorPrecision blue)   {_b = blue;}
+    void setRed(colorPrecision red)     {r = red;}
+    void setGreen(colorPrecision green) {g = green;}
+    void setBlue(colorPrecision blue)   {b = blue;}
     
-    colorPrecision r(){return _r;}
-    colorPrecision g(){return _g;}
-    colorPrecision b(){return _b;}
+    //colorPrecision r(){return r;}
+    //colorPrecision g(){return g;}
+    //colorPrecision b(){return b;}
     
     //Assignment operators
     //these operators perform no clamping
-    rgb& operator=(const rgb & right_op);
-    rgb& operator+=(const rgb & right_op);
-    rgb& operator-=(const rgb & right_op);
-    rgb& operator*=(const rgb & right_op);
-    rgb& operator/=(const rgb & right_op);
-    rgb& operator*=(colorPrecision right_op);
-    rgb& operator/=(colorPrecision right_op);
+    rgb& operator=(const rgb & rightOp);
+    rgb& operator+=(const rgb & rightOp);
+    rgb& operator-=(const rgb & rightOp);
+    rgb& operator*=(const rgb & rightOp);
+    rgb& operator/=(const rgb & rightOp);
+    rgb& operator*=(colorPrecision rightOp);
+    rgb& operator/=(colorPrecision rightOp);
     
     //Urinary operators
     rgb operator+()const {return *this;}
-    rgb operator-()const {return rgb(-_r, -_g, -_b);}
+    rgb operator-()const {return rgb(-r, -g, -b);}
     
     void clamp();
     
-    friend ostream& operator<<(ostream & out, const rgb & the_rgb);
+    friend ostream& operator<<(ostream & out, const rgb & theRGB);
     friend rgb operator*(const rgb & c, colorPrecision f);
     friend rgb operator*(colorPrecision f, const rgb & c);
     friend rgb operator/(const rgb & c, colorPrecision f);
@@ -53,86 +53,86 @@ public:
     friend rgb operator+(const rgb & c1, const rgb & c2);
     friend rgb operator-(const rgb & c1, const rgb & c2);
     
-    colorPrecision _r;
-    colorPrecision _g;
-    colorPrecision _b;
+    colorPrecision r;
+    colorPrecision g;
+    colorPrecision b;
 };
 
 inline rgb::rgb(colorPrecision red, colorPrecision green, colorPrecision blue)
-    :_r(red), _g(green), _b(blue) {}
+    :r(red), g(green), b(blue) {}
 
-inline rgb& rgb::operator+=(const rgb & right_op){
-    *this = *this + right_op;
+inline rgb& rgb::operator+=(const rgb & rightOp){
+    *this = *this + rightOp;
     return *this;
 }
 
-inline rgb& rgb::operator-=(const rgb & right_op){
-    *this = *this - right_op;
+inline rgb& rgb::operator-=(const rgb & rightOp){
+    *this = *this - rightOp;
     return *this;
 }
 
-inline rgb& rgb::operator*=(const rgb & right_op){
-    *this = *this * right_op;
+inline rgb& rgb::operator*=(const rgb & rightOp){
+    *this = *this * rightOp;
     return *this;
 }
 
-inline rgb& rgb::operator/=(const rgb & right_op){
-    *this = *this / right_op;
+inline rgb& rgb::operator/=(const rgb & rightOp){
+    *this = *this / rightOp;
     return *this;
 }
 
-inline rgb& rgb::operator*=(colorPrecision right_op){
-    *this = *this * right_op;
+inline rgb& rgb::operator*=(colorPrecision rightOp){
+    *this = *this * rightOp;
     return *this;
 }
 
-inline rgb& rgb::operator/=(colorPrecision right_op){
-    *this = *this / right_op;
+inline rgb& rgb::operator/=(colorPrecision rightOp){
+    *this = *this / rightOp;
     return *this;
 }
 
-inline rgb& rgb::operator=(const rgb & right_op){
-    _r = right_op._r;
-    _g = right_op._g;
-    _b = right_op._b;
+inline rgb& rgb::operator=(const rgb & rightOp){
+    r = rightOp.r;
+    g = rightOp.g;
+    b = rightOp.b;
     return *this;
 }
 
 inline void rgb::clamp(){
-    if (_r > 1.0f) _r = 1.0f;
-    if (_g > 1.0f) _g = 1.0f;
-    if (_b > 1.0f) _b = 1.0f;
-    if (_r < 0.0f) _r = 0.0f;
-    if (_g < 0.0f) _g = 0.0f;
-    if (_b < 0.0f) _b = 0.0f;
+    if (r > 1.0f) r = 1.0f;
+    if (g > 1.0f) g = 1.0f;
+    if (b > 1.0f) b = 1.0f;
+    if (r < 0.0f) r = 0.0f;
+    if (g < 0.0f) g = 0.0f;
+    if (b < 0.0f) b = 0.0f;
 }
 
-inline ostream& operator<<(ostream & out, const rgb & the_rgb){
-    out << the_rgb._r << "r "
-        << the_rgb._g << "g "
-        << the_rgb._b << "b ";
+inline ostream& operator<<(ostream & out, const rgb & theRGB){
+    out << theRGB.r << "r "
+        << theRGB.g << "g "
+        << theRGB.b << "b ";
     return out;
 }
 
 inline rgb operator*(const rgb & c, colorPrecision f)
-    {return rgb(c._r * f, c._g * f, c._b * f);}
+    {return rgb(c.r * f, c.g * f, c.b * f);}
 
 inline rgb operator*(colorPrecision f, const rgb & c)
-    {return rgb(c._r * f, c._g * f, c._b * f);}
+    {return rgb(c.r * f, c.g * f, c.b * f);}
 
 inline rgb operator/(const rgb & c, colorPrecision f)
-    {return rgb(c._r / f, c._g / f, c._b / f);}
+    {return rgb(c.r / f, c.g / f, c.b / f);}
 
 inline rgb operator*(const rgb & c1, const rgb & c2)
-    {return rgb(c1._r * c2._r, c1._g / c2._g, c1._b / c2._b);}
+    {return rgb(c1.r * c2.r, c1.g / c2.g, c1.b / c2.b);}
 
 inline rgb operator/(const rgb & c1, const rgb & c2)
-    {return rgb(c1._r / c2._r, c1._g / c2._g, c1._b / c2._b);}
+    {return rgb(c1.r / c2.r, c1.g / c2.g, c1.b / c2.b);}
 
 inline rgb operator+(const rgb & c1, const rgb & c2)
-    {return rgb(c1._r + c2._r, c1._g + c2._g, c1._b + c2._b);}
+    {return rgb(c1.r + c2.r, c1.g + c2.g, c1.b + c2.b);}
 
 inline rgb operator-(const rgb & c1, const rgb & c2)
-    {return rgb(c1._r - c2._r, c1._g - c2._g, c1._b - c2._b);}
+    {return rgb(c1.r - c2.r, c1.g - c2.g, c1.b - c2.b);}
 
-#endif // _RGB_H_
+#endif // rGB_H_

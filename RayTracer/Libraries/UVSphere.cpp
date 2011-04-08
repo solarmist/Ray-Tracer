@@ -8,12 +8,12 @@
 
 #include "UVSphere.h"
 
-UVSphere::UVSphere(const Vector3& _center, const double _radius, Texture* _tex)
-:center(_center), radius((precision)_radius), tex(_tex) {}
+UVSphere::UVSphere(const Vector3& _center, const precision _radius, Texture* _tex)
+:center(_center), radius(_radius), tex(_tex) {}
 
 //BBox Sphere::boundingBox() const;
 
-bool UVSphere::hit(const Ray& r, precision tmin, precision tmax, precision time, HitRecord& record) const{
+bool UVSphere::hit(const Ray& r, precision tMin, precision tMax, precision time, HitRecord& record) const{
     Vector3 temp = r.origin() - center;
     
     double a = dot(r.direction(), r.direction());
@@ -28,16 +28,16 @@ bool UVSphere::hit(const Ray& r, precision tmin, precision tmax, precision time,
         double t = (- b - discriminant) / (2 * a);
         
         //Now check for a valid interval
-        if(t < tmin)
+        if(t < tMin)
             t = (- b + discriminant) / (2 * a);
-        if(t < tmin || t > tmax)
+        if(t < tMin || t > tMax)
             return false;
         
         //We have a valid hit
         record.t = (precision)t;
-        record.hit_p = (r.origin() + (precision)t * r.direction());
+        record.hitP = (r.origin() + (precision)t * r.direction());
         //record.normal = unitVector(r.origin() + (precision)t * r.direction() - center);
-        Vector3 n = record.normal = (record.hit_p - center) / radius;
+        Vector3 n = record.normal = (record.hitP - center) / radius;
         
         //Calculate UV coordinates
         precision twopi = precision(2 * M_PI);
@@ -53,7 +53,7 @@ bool UVSphere::hit(const Ray& r, precision tmin, precision tmax, precision time,
     
     return false;
 }
-bool UVSphere::shadowHit(const Ray& r, precision tmin, precision tmax, precision time, HitRecord& record) const{
+bool UVSphere::shadowHit(const Ray& r, precision tMin, precision tMax, precision time, HitRecord& record) const{
     Vector3 temp = r.origin() - center;
     
     double a = dot(r.direction(), r.direction());
@@ -68,9 +68,9 @@ bool UVSphere::shadowHit(const Ray& r, precision tmin, precision tmax, precision
         double t = (- b - discriminant) / (2 * a);
         
         //Now check for a valid interval
-        if(t < tmin)
+        if(t < tMin)
             t = (- b + discriminant) / (2 * a);
-        if(t < tmin || t > tmax)
+        if(t < tMin || t > tMax)
             return false;
         
         //We have a valid hit
