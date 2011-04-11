@@ -14,7 +14,7 @@
 #include "Shape.h"
 #include "Vector2.h"
 
-struct SurfaceHitRecord;
+struct HitRecord;
 
 class Material {
 public:
@@ -69,7 +69,7 @@ public:
     //{return false;}
     
     virtual bool scatterDirection(const Vector3&,           //incident vector
-                                  const SurfaceHitRecord&,  //hit we are shading
+                                  const HitRecord&,  //hit we are shading
                                   Vector2&,                 //Random seed
                                   rgb&,                     //Color to attenuate by
                                   bool&,                    //Count emitted light&

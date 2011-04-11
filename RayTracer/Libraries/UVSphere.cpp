@@ -53,7 +53,7 @@ bool UVSphere::hit(const Ray& r, precision tMin, precision tMax, precision time,
     
     return false;
 }
-bool UVSphere::shadowHit(const Ray& r, precision tMin, precision tMax, precision time, HitRecord& record) const{
+bool UVSphere::shadowHit(const Ray& r, precision tMin, precision tMax, precision time) const{
     Vector3 temp = r.origin() - center;
     
     double a = dot(r.direction(), r.direction());

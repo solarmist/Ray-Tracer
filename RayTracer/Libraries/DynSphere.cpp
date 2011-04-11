@@ -42,7 +42,7 @@ bool DynSphere::hit(const Ray& r, precision tmin, precision tmax, precision time
     
     return false;
 }
-bool DynSphere::shadowHit(const Ray& r, precision tmin, precision tmax, precision time, HitRecord& record) const{
+bool DynSphere::shadowHit(const Ray& r, precision tmin, precision tmax, precision time) const{
     Vector3 new_center = getCenter(time);
     Vector3 temp = r.origin() - new_center;
     

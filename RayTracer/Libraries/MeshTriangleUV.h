@@ -16,7 +16,7 @@ public:
     MeshTriangleUV(Mesh* _mesh, int p0, int p1, int p2, int index)
     :meshPtr(_mesh) {p[0] = p0; p[1] = p1; p[2] = p2;};
     bool hit(const Ray& r, precision tMin, precision tMax, precision time, HitRecord& record) const;
-    bool shadowHit(const Ray& r, precision tMin, precision tMax, precision time, HitRecord& record) const;
+    bool shadowHit(const Ray& r, precision tMin, precision tMax, precision time) const;
     
     int p[3];
     Mesh* meshPtr;

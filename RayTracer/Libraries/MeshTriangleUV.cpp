@@ -71,7 +71,7 @@ bool MeshTriangleUV::hit(const Ray& r, precision tMin, precision tMax, precision
     return false;
 }
 
-bool MeshTriangleUV::shadowHit(const Ray& r, precision tMin, precision tMax, precision time, HitRecord& record) const{
+bool MeshTriangleUV::shadowHit(const Ray& r, precision tMin, precision tMax, precision time) const{
     Vector3 p0( (meshPtr->vertUVs[p[0]]).vertex );
     Vector3 p1( (meshPtr->vertUVs[p[1]]).vertex );
     Vector3 p2( (meshPtr->vertUVs[p[2]]).vertex );

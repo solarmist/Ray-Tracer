@@ -78,7 +78,7 @@ bool Triangle::hit(const Ray& r, precision tMin, precision tMax, precision time,
     return false;
 }
 
-bool Triangle::shadowHit(const Ray& r, precision tMin, precision tMax, precision time, HitRecord& record) const{
+bool Triangle::shadowHit(const Ray& r, precision tMin, precision tMax, precision time) const{
     precision tval;
     precision A = p0.x() - p1.x();
     precision B = p0.y() - p1.y();

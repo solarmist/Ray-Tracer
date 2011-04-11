@@ -31,7 +31,7 @@ public:
                       rgb&);           //BRDF
     
     bool scatterDirection(const Vector3&,           //incident vector
-                          const SurfaceHitRecord&,  //hit we are shading
+                          const HitRecord&,  //hit we are shading
                           Vector2&,                 //Random seed
                           rgb&,                     //Color to attenuate by
                           bool&,                    //Count emitted light&

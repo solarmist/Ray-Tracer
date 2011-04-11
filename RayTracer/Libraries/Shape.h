@@ -20,7 +20,7 @@ class ONB;
 class Ray;
 class rgb;
 
-struct HitRecord
+/*struct HitRecord
 {
     precision t;
     Vector3 normal;
@@ -28,11 +28,18 @@ struct HitRecord
     Vector2 uv;         //We will use this for 2d textures
     Vector3 hitP;      //The point of intersection
     Texture* hitTex;   //The nearest intersected object's texture
-};
+};//*/
 
-struct SurfaceHitRecord {
+//SurfaceHitRecord
+struct HitRecord {
     precision t;
-    Vector3 p;          //Point of interscetion
+
+    //From old version
+    Vector3 normal;
+    rgb color;
+    Texture* hitTex;   //The nearest intersected object's texture
+
+    Vector3 hitP;          //Point of interscetion
     Vector3 exp;        //Point of interscetion for texture mapping
     ONB uvw;            //w is the outward normal
     Vector2 uv;
@@ -45,7 +52,7 @@ public:
     virtual bool randomPoint(const Vector3& viewPoint, const Vector2& seed, precision time, 
                      Vector3& lightPoint, Vector3& N, precision& pdf, rgb& radiance) const = 0;
     virtual bool hit(const Ray& r, precision tMin, precision tMax, precision time, HitRecord& record) const = 0;
-    virtual bool shadowHit(const Ray& r, precision tMin, precision tMax, precision time, HitRecord& record) const = 0;
+    virtual bool shadowHit(const Ray& r, precision tMin, precision tMax, precision time) const = 0;
     
     Material* matPtr;
 };

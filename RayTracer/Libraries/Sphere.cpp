@@ -40,9 +40,9 @@ bool Sphere::randomPoint(const Vector3& viewPoint, const Vector2& seed, precisio
     Ray toLight(viewPoint, 
                 kI.x() * uvw.u() + kI.y() *uvw.v() + kI.z() * uvw.w());
     
-    SurfaceHitRecord rec;
-    if (this->hit(toLight, 0.00001, 4294967295.0f, time, rec)) {
-        lightPoint = rec.p;
+    HitRecord rec;
+    if (this->hit(toLight, 0.00001f, 4294967295.0f, time, rec)) {
+        lightPoint = rec.hitP;
         precision cosThetaPrime = -dot(rec.uvw.w(), toLight.direction());
         pdf = q * cosThetaPrime / (lightPoint - viewPoint).squaredLength();
         N = rec.uvw.w();

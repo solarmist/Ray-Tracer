@@ -18,7 +18,7 @@ public:
     UVSphere(const Vector3& _center, const precision _radius, Texture* _tex);
     //BBox boundingBox() const;
     bool hit(const Ray& r, precision tMin, precision tMax, precision time, HitRecord& record) const;
-    bool shadowHit(const Ray& r, precision tMin, precision tMax, precision time, HitRecord& record) const;
+    bool shadowHit(const Ray& r, precision tMin, precision tMax, precision time) const;
     
     Vector3 center;
     precision radius;

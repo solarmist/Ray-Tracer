@@ -8,8 +8,8 @@
 
 #include "DiffSpecMaterial.h"
 
-rgb DiffSpecMaterial::ambientResponse(const ONB& uvw, const Vector3& v_in, const Vector3& p, const Vector2& uv){
-    precision cosine = dot(v_in, uvw.w());
+rgb DiffSpecMaterial::ambientResponse(const ONB& uvw, const Vector3& vIn, const Vector3& p, const Vector2& uv){
+    precision cosine = dot(vIn, uvw.w());
     if(cosine < 0.0f)
         cosine = -cosine;
     precision temp1 = 1.0f - cosine;
@@ -17,9 +17,9 @@ rgb DiffSpecMaterial::ambientResponse(const ONB& uvw, const Vector3& v_in, const
     precision P = (R + 0.5f) / 2.0f;
     
     if(rng() <= P)
-        return specMat->ambientResponse(uvw, v_in, p, uv);
+        return specMat->ambientResponse(uvw, vIn, p, uv);
     else
-        return diffMat->ambientResponse(uvw, v_in, p, uv);
+        return diffMat->ambientResponse(uvw, vIn, p, uv);
 }
 
 bool DiffSpecMaterial::explicitBrdf(const ONB& uvw, const Vector3& v0, const Vector3& v1, 
@@ -27,9 +27,9 @@ bool DiffSpecMaterial::explicitBrdf(const ONB& uvw, const Vector3& v0, const Vec
     return diffMat->explicitBrdf(uvw, v0, v1, p, uv, brdf);
 }
 
-bool DiffSpecMaterial::scatterDirection(const Vector3& v_in, const SurfaceHitRecord& rec, Vector2& seed, 
+bool DiffSpecMaterial::scatterDirection(const Vector3& vIn, const HitRecord& rec, Vector2& seed, 
                                         rgb& color, bool& CEL, precision& brdf, Vector3& reflection){
-    precision cosine = dot(v_in, rec.uvw.w());
+    precision cosine = dot(vIn, rec.uvw.w());
     if(cosine < 0.0f)
         cosine = -cosine;
     precision temp1 = 1.0f - cosine;
@@ -39,10 +39,10 @@ bool DiffSpecMaterial::scatterDirection(const Vector3& v_in, const SurfaceHitRec
     //We assume that spec_mat and diff_mat return brfd_scales of 1
     if(rng() <= P){
         brdf = R / P;
-        return specMat->scatterDirection(v_in, rec, seed, color, CEL, brdf, reflection);
+        return specMat->scatterDirection(vIn, rec, seed, color, CEL, brdf, reflection);
     }
     else{
         brdf = (1.0f - R) / (1.0f - P);
-        return diffMat->scatterDirection(v_in, rec, seed, color, CEL, brdf, reflection);
+        return diffMat->scatterDirection(vIn, rec, seed, color, CEL, brdf, reflection);
     }
 }
