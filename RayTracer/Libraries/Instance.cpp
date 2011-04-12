@@ -10,8 +10,10 @@
 
 Instance::Instance(Matrix trans, Matrix transInverse, Shape* _prim)
     :M(trans), N(transInverse), prim(_prim){}
+
 Instance::Instance(Matrix trans, Shape* _prim)
     :M(trans), N(trans), prim(_prim){N.invert();}
+
 bool Instance::hit(const Ray& r, precision tMin, precision tMax, precision time, HitRecord& record) const{
     Vector3 nOrigin = transformLoc(N, r.origin());
     Vector3 nDir = transformVec(N, r.direction());
@@ -28,7 +30,6 @@ bool Instance::hit(const Ray& r, precision tMin, precision tMax, precision time,
     }
     else
         return false;
-        
 }
 
 bool Instance::shadowHit(const Ray& r, precision tMin, precision tMax, precision time) const{

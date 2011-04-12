@@ -27,7 +27,7 @@ public:
     {
         seed        = _seed;
         mult        = 620394626989911ULL;
-        llongMax   = 18446744073709551615UL;
+        llongMax   = 18446744073709551615ULL;
         floatMax   = 18446744073709551615.0f;
         
         if (sizeof(precision) < 8) {

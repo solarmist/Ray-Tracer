@@ -58,7 +58,7 @@ int main ()
     //Geometery
     vector<Shape *> shapes;
     shapes.push_back(new Sphere(Vector3(0, 0, -2), 
-                                (precision)sqrt(2), rgb(.2f, .8f, .2f)));//, minTime, maxTime));
+                                (precision)sqrt(2), rgb(.2f, .8f, .2f)));
     shapes.push_back(new Sphere(Vector3(10, 20, -20), 
                                 5, 
                                 rgb(.2f, .2f, .8f)) );

@@ -10,9 +10,8 @@
 
 Matrix::Matrix(const Matrix& orig){
     for (int i = 0; i < 4; i++)
-        for (int j = 0; j < 4; j++) {
+        for (int j = 0; j < 4; j++) 
             x[i][j] = orig.x[i][j];
-        }
 }
 
 inline void Matrix::invert(){
@@ -97,17 +96,17 @@ inline Matrix Matrix::getTranspose() const{
 
 inline Matrix& Matrix::operator+= (const Matrix& rightOp){
     for (int i = 0; i < 4; i++)
-        for (int j = 0; j < 4; j++) {
+        for (int j = 0; j < 4; j++)
             x[i][j] += rightOp.x[i][j];
-        }
+    
     return *this;
 }
 
 inline Matrix& Matrix::operator-= (const Matrix& rightOp){
     for (int i = 0; i < 4; i++)
-        for (int j = 0; j < 4; j++) {
+        for (int j = 0; j < 4; j++)
             x[i][j] -= rightOp.x[i][j];
-        }
+    
     return *this;
 }
 
@@ -119,8 +118,10 @@ inline Matrix& Matrix::operator*= (const Matrix& rightOp){
             precision sum = 0.0f;
             for (int k = 0; k < 4; k++) 
                 sum += ret.x[i][k] * rightOp.x[k][j];
+            
             x[i][j] = sum;
         }
+    
     return *this;
 }
 
@@ -128,6 +129,7 @@ inline Matrix& Matrix::operator*= (precision rightOp){
     for (int i = 0; i < 4; i++)
         for (int j = 0; j < 4; j++)
             x[i][j] *= rightOp;
+    
     return *this;
 }
 
@@ -136,6 +138,7 @@ inline Matrix operator+ (const Matrix& leftOp, const Matrix& rightOp){
     for (int i = 0; i < 4; i++)
         for (int j = 0; j < 4; j++)
             ret.x[i][j] = leftOp.x[i][j] + rightOp.x[i][j];
+    
     return ret;
 }
 
@@ -144,6 +147,7 @@ inline Matrix operator- (const Matrix& leftOp, const Matrix& rightOp){
     for (int i = 0; i < 4; i++)
         for (int j = 0; j < 4; j++)
             ret.x[i][j] = leftOp.x[i][j] - rightOp.x[i][j];
+    
     return ret;
 }
 
@@ -154,8 +158,10 @@ inline Matrix operator* (const Matrix& leftOp, const Matrix& rightOp){
             precision sum = 0.0f;
             for (int k = 0; k < 4; k++)
                 sum += leftOp.x[i][k] - rightOp.x[k][j];
+            
             ret.x[i][j] = sum;
         }
+    
     return ret;    
 }
 
@@ -164,6 +170,7 @@ inline Matrix operator* (const Matrix& leftOp, precision rightOp){
     for (int i = 0; i < 4; i++)
         for (int j = 0; j < 4; j++)
             ret.x[i][j] = leftOp.x[i][j] * rightOp;
+    
     return ret;
 }
 
@@ -197,9 +204,9 @@ inline Vector3 transformVec(const Matrix& leftOp, const Vector3& rightOp){
 inline Matrix zeroMatrix(){
     Matrix ret;
     for (int i = 0; i < 4; i++)
-        for (int j = 0; j < 4; j++) {
+        for (int j = 0; j < 4; j++)
             ret.x[i][j] = 0.0f;
-        }
+    
     return ret;
 }
 
@@ -207,7 +214,7 @@ inline Matrix identityMatrix(){
     Matrix ret;
     for (int i = 0; i < 4; i++) 
         for (int j = 0; j < 4; j++) 
-            ret.x[i][j] =(i==j)?1.0f:0.0f;
+            ret.x[i][j] = ( (i==j) ? 1.0f : 0.0f);
     
     return ret;
 }
@@ -308,7 +315,8 @@ inline Matrix rotateZ(precision angle){
     ret.x[1][0] = sine;
     ret.x[1][1] = cosine;
     
-    return ret;}
+    return ret;
+}
 
 inline Matrix viewMatrix(const Vector3& eye, const Vector3& gaze, const Vector3& up){
     Matrix ret;
@@ -347,8 +355,10 @@ inline ostream& operator<<(ostream& out, const Matrix& rightOp){
     for (int i = 0; i < 4; i++){
         for (int j = 0; j < 4; j++)
             out << setprecision(3) << setw(10) << rightOp.x[i][j];
+        
         out << endl;
     }
+    
     return out;
 }
 

@@ -83,7 +83,7 @@ bool Sphere::hit(const Ray& r, precision tMin, precision tMax, precision time, H
     
     return false;
 }
-bool Sphere::shadowHit(const Ray& r, precision tMin, precision tMax, precision time, HitRecord& record) const{
+bool Sphere::shadowHit(const Ray& r, precision tMin, precision tMax, precision time) const{
     Vector3 temp = r.origin() - center;
     
     double a = dot(r.direction(), r.direction());

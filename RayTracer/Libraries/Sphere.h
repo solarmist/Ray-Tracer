@@ -21,7 +21,7 @@ public:
     bool randomPoint(const Vector3& viewPoint, const Vector2& seed, precision time, 
                      Vector3& lightPoint, Vector3& N, precision& pdf, rgb& radiance) const;
     bool hit(const Ray& r, precision tMin, precision tMax, precision time, HitRecord& record) const;
-    bool shadowHit(const Ray& r, precision tMin, precision tMax, precision time, HitRecord& record) const;
+    bool shadowHit(const Ray& r, precision tMin, precision tMax, precision time) const;
     
     Vector3 center;
     precision radius;
