@@ -37,9 +37,9 @@ struct HitRecord {
     //From old version
     Vector3 normal;
     rgb color;
-    Texture* hitTex;   //The nearest intersected object's texture
+    Texture* hitTex;    //The nearest intersected object's texture
 
-    Vector3 hitP;          //Point of interscetion
+    Vector3 hitP;       //Point of interscetion
     Vector3 exp;        //Point of interscetion for texture mapping
     ONB uvw;            //w is the outward normal
     Vector2 uv;
