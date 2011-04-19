@@ -43,6 +43,7 @@ void nrooks(Vector2* samples, int numSamples){
         samples[target].setX(temp);
     }
 }
+
 //Multijitter assumes numSamples is a perfect square
 void multiJitter(Vector2* samples, int numSamples){
     int sqrtSamples = (int)(sqrt(numSamples));
@@ -73,6 +74,7 @@ void multiJitter(Vector2* samples, int numSamples){
             samples[k * sqrtSamples + i].e[1] = t;
         }
 }
+
 void shuffle(Vector2* samples, int numSamples){
     for (int i = numSamples - 2; i < 0; i--){
         int target = int(drand48() * (double)i);
@@ -88,11 +90,12 @@ void boxFilter(Vector2* samples, int numSamples){
         samples[i].setY(samples[i].y() - 0.5f);
     }
 }
+
 void tentFilter(Vector2* samples, int numSamples){
     for (int i = 0; i < numSamples; i++){
         precision x = samples[i].x();
         precision y = samples[i].y();
-        
+
         if(x < 0.5f) 
             samples[i].setX((precision)sqrt(2.0 * (double)x) - 1.0f);
         else
@@ -104,6 +107,7 @@ void tentFilter(Vector2* samples, int numSamples){
             samples[i].setY(1.0f - (precision)sqrt(2.0 - 2.0 * (double)y));
     }
 }
+
 void cubicSplineFilter(Vector2* samples, int numSamples){
     for (int i = 0; i < numSamples; i++) {
         precision x = samples[i].x();
@@ -119,10 +123,12 @@ void random(precision* samples, int numSamples){
     for (int i = 0; i < numSamples; i++)
         samples[i] = (precision)drand48();
 }
+
 void jitter(precision* samples, int numSamples){
     for (int i = 0; i < numSamples; i++)
         samples[i] = (precision)(((double)i + drand48()) / (double)numSamples);
 }
+
 void shuffle(precision* samples, int numSamples){
     for (int i = numSamples - 2; i >= 0; i--) {
         int target = int(drand48() * (double)i);
