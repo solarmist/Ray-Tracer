@@ -78,8 +78,8 @@ int main ()
     
     //Scale image samples to [-1,1]
     for (int i = 0; i < numLens; i++){
-        imageSamples[i].setX( (imageSamples[i].x() + 1.0f) / 2.0f);
-        imageSamples[i].setY( (imageSamples[i].y() + 1.0f) / 2.0f);
+        imageSamples[i].setX( (imageSamples[i].x()) / 2.0f);
+        imageSamples[i].setY( (imageSamples[i].y()) / 2.0f);
     }
     
     //Scale lens samples to [0,1]
