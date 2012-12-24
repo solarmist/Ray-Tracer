@@ -82,13 +82,15 @@ inline void Matrix::transpose(){
         }
 }
 
-inline Matrix Matrix::getInverse() const{
+//Cannot be inline due to http://www.educatedguesswork.org/2011/09/undefined_symbol_vtable_what_t.html
+Matrix Matrix::getInverse() const{
     Matrix ret = *this;
     ret.invert();
     return ret;
 }
 
-inline Matrix Matrix::getTranspose() const{
+//Cannot be inline due to http://www.educatedguesswork.org/2011/09/undefined_symbol_vtable_what_t.html
+Matrix Matrix::getTranspose() const{
     Matrix ret = *this;
     ret.transpose();
     return ret;
@@ -188,10 +190,12 @@ inline Vector3 operator* (const Matrix& leftOp, const Vector3& rightOp){
     return ret;
 }
 
-inline Vector3 transformLoc(const Matrix& leftOp, const Vector3& rightOp){
+//Cannot be inline due to http://www.educatedguesswork.org/2011/09/undefined_symbol_vtable_what_t.html
+Vector3 transformLoc(const Matrix& leftOp, const Vector3& rightOp){
     return leftOp * rightOp;}
 
-inline Vector3 transformVec(const Matrix& leftOp, const Vector3& rightOp){
+//Cannot be inline due to http://www.educatedguesswork.org/2011/09/undefined_symbol_vtable_what_t.html
+Vector3 transformVec(const Matrix& leftOp, const Vector3& rightOp){
     Vector3 ret;
     
     ret[0] = rightOp[0] * leftOp.x[0][0] + rightOp[1] * leftOp.x[0][1] + rightOp[2] * leftOp.x[0][2];
